@@ -37,6 +37,7 @@ class Livre :
     @property
     def annee(self):
         return f"{self.annee}"
+    @annee.setter
     def annee(self,value):
         self.__annee=value
     @property
@@ -72,7 +73,7 @@ class LivreDAO :
         root.append(new_livre)
         self.__tree.write(LivreDAO.__storage_file_path)
     
-    def rechercher(self, copy_id, isbn):
+    def rechercher_id_isbn(self, copy_id, isbn):
         targeted_livre = None
         root = self.__tree.getroot()
         list_des_livres = root.findall("livre")
@@ -83,7 +84,7 @@ class LivreDAO :
                 targeted_livre = livre
         return targeted_livre
 
-    def rechercher(self, titre):
+    def rechercher_titre(self, titre):
         targeted_livre = None
         root = self.__tree.getroot()
         list_des_livres = root.findall("livre")
@@ -98,3 +99,13 @@ class LivreDAO :
         targeted_livre = self.rechercher(id)
         targeted_livre.set("statut","emprunte")
         self.__tree.write(LivreDAO.__storage_file_path)
+
+    def livre_from_element(elem):
+        livre = Livre()
+        livre.copy_id = elem.get("copy-id")
+        livre.isbn = elem.get("isbn")
+        livre.titre = elem.find("titre").text
+        livre.auteur = elem.find("auteur").text
+        livre.annee = elem.find("annee").text
+        livre.genre = elem.find("genre").text
+        return livre
