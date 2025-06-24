@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<membres xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="validation/membres.xsd">
+    <membre id="13352">
+        <nom>amine</nom>
+        <list-livres-empr>
+            <copy id="32385" isbn="2984"></copy>
+            <copy id="23525" isbn="23523"></copy>
+        </list-livres-empr>
+    </membre>
+</membres>

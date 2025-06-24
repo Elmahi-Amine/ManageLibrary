@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="statut-type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="disponible"></xs:enumeration>
+            <xs:enumeration value="emprunte"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="livres">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="livre" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="titre" type="xs:string"></xs:element>
+                            <xs:element name="auteur" type="xs:string"></xs:element>
+                            <xs:element name="annee" type="xs:integer"></xs:element>
+                            <xs:element name="genre" type="xs:string"></xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="isbn" type="xs:string"></xs:attribute>
+                        <xs:attribute name="copy-id" type="xs:string"></xs:attribute>
+                        <xs:attribute name="statut" type="statut-type"></xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

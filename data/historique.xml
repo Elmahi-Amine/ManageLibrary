@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<historique xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="validation/history.xsd">
+    <evenement date-time="2011-05-11T22:00:00">
+        <membre-id>23523</membre-id>
+        <copy id="235" isbn="23523" />
+        <action>emprunter</action>
+    </evenement>
+<evenement date-time="2025-06-24T05:38:32.631543"><membre-id>M001</membre-id><copy id="C123" isbn="9783161484100" /><action>emprunter</action></evenement></historique>

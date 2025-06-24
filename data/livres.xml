@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<livres xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="validation/livres.xsd">
+    <livre copy-id="235324" isbn="23525-2--5-2" statut="disponible">
+        <titre>
+            the dead land
+        </titre>
+        <auteur>
+            Hmida Ali
+        </auteur>
+        <annee>
+            2022
+        </annee>
+        <genre>
+            drama
+        </genre>
+    </livre>
+    
+    
+</livres>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="historique">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="evenement" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="membre-id" type="xs:string"></xs:element>
+                            <xs:element name="copy">
+                                <xs:complexType>
+                                    <xs:attribute name="id" type="xs:string"></xs:attribute>
+                                    <xs:attribute name="isbn" type="xs:string"></xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="action">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="emprunter"></xs:enumeration>
+                                        <xs:enumeration value="retourner"></xs:enumeration>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="date-time" type="xs:dateTime"></xs:attribute>
+
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

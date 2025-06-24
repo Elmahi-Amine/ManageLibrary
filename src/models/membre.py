@@ -29,11 +29,9 @@ class Membre:
 
 
 class MembreDAO:
+    __storage_file_path ="data/membres.xml"
     def __init__(self):
-        # TODO
-        #parse membres.xml
-        #return the element tree
-        self.__tree = et.parse("data/membres.xml")
+        self.__tree = et.parse(MembreDAO.__storage_file_path)
     @property 
     def etree(self):
         return self.__tree
@@ -53,6 +51,7 @@ class MembreDAO:
             copy.set("isbn",c.isbn)
         # ajouter le tout dans root
         root.append(new_membre)
+        self.__tree.write(MembreDAO.__storage_file_path)
     #supprimer le membre avec le id donnee
     def supprimer(self,id):
         targeted_membre , root = self.rechercher(id)
@@ -80,3 +79,18 @@ class MembreDAO:
             if(mmbr_nom.text == id):
                 targeted_membre = mmbr
         return targeted_membre,root
+    def modifier(self,id,field,newValue):
+        targeted_membre,root=self.rechercher(id)
+        match field :
+            case "nom" : 
+                targeted_membre.find("nom").text=newValue
+            case "id"   :
+                targeted_membre.set("id",newValue)
+    def emprunter(self,id,livre:Livre):
+        targeted_membre,root= self.rechercher(id)
+        if(targeted_membre!=None):
+            list_livre_empr= targeted_membre.find("list-livres-empr")
+            copy = et.SubElement(list_livre_empr,"copy")
+            copy.set("id",livre.copy_id)
+            copy.set("isbn",livre.isbn)
+            
