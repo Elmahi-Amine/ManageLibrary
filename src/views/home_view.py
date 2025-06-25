@@ -4,4 +4,5 @@ class HomeView(tk.Frame):
         super().__init__(parent, bg="#dbdbdb")
         tk.Label(self, text="Home", font=("Arial", 18), bg="#dbdbdb").pack(pady=40)
         
+        
    

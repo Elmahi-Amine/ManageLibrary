@@ -1,6 +1,6 @@
 from views.main_view import MainView 
 from views.home_view import HomeView
-
+from views.livre_view import LivreView
 class AppController:
     def __init__(self, root):
         self.root = root
@@ -8,7 +8,7 @@ class AppController:
 
         # View
         self.view = MainView(root, self)
-
+        self.show_Home_view()
         # Bind events
         root.bind("<Button-1>", self.on_click_outside)
         root.bind("<Configure>", self.on_window_resize)
@@ -16,7 +16,15 @@ class AppController:
     def show_Home_view(self):
         self.clear_content()
         home_view = HomeView(self.view.content_area)
+        self.update_current_view_label("Home")
         home_view.pack(fill="both", expand=True)
+        self.hide_menu()
+        
+    def show_livre_view(self):
+        self.clear_content()
+        self.update_current_view_label("Livres")
+        livre_view = LivreView(self.view.content_area)
+        livre_view.pack(fill="both",expand=True)
         self.hide_menu()
 
     def clear_content(self):
@@ -62,3 +70,6 @@ class AppController:
         height = self.root.winfo_height()
         self.view.menu_frame.config(height=height)
         self.view.menu_frame.place(y=0)
+    
+    def update_current_view_label(self,newView):
+        self.view.current_view_label.config(text=newView)

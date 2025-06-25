@@ -1,20 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<livres xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="validation/livres.xsd">
-    <livre copy-id="235324" isbn="23525-2--5-2" statut="disponible">
-        <titre>
-            the dead land
-        </titre>
-        <auteur>
-            Hmida Ali
-        </auteur>
-        <annee>
-            2022
-        </annee>
-        <genre>
-            drama
-        </genre>
+<livres>
+    <livre isbn="978-0001" copy-id="C1" statut="disponible">
+        <titre>Le Petit Prince</titre>
+        <auteur>Antoine de Saint-Exupéry</auteur>
+        <annee>1943</annee>
+        <genre>Fiction</genre>
     </livre>
-    
-    
+    <livre isbn="978-0002" copy-id="C1" statut="emprunte">
+        <titre>L'Étranger</titre>
+        <auteur>Albert Camus</auteur>
+        <annee>1942</annee>
+        <genre>Philosophie</genre>
+    </livre>
+    <livre isbn="978-0003" copy-id="C1" statut="disponible">
+        <titre>1984</titre>
+        <auteur>George Orwell</auteur>
+        <annee>1949</annee>
+        <genre>Dystopie</genre>
+    </livre>
+    <livre isbn="978-0003" copy-id="C2" statut="disponible">
+        <titre>1984</titre>
+        <auteur>George Orwell</auteur>
+        <annee>1949</annee>
+        <genre>Dystopie</genre>
+    </livre>
+    <livre isbn="978-0005" copy-id="C1" statut="emprunte">
+        <titre>Harry Potter à l'école des sorciers</titre>
+        <auteur>J.K. Rowling</auteur>
+        <annee>1997</annee>
+        <genre>Fantastique</genre>
+    </livre>
+    <livre isbn="978-0006" copy-id="C1" statut="disponible">
+        <titre>Le Comte de Monte-Cristo</titre>
+        <auteur>Alexandre Dumas</auteur>
+        <annee>1844</annee>
+        <genre>Aventure</genre>
+    </livre>
+    <livre isbn="978-0007" copy-id="C1" statut="disponible">
+        <titre>Les Misérables</titre>
+        <auteur>Victor Hugo</auteur>
+        <annee>1862</annee>
+        <genre>Drame</genre>
+    </livre>
+    <livre isbn="978-0008" copy-id="C1" statut="emprunte">
+        <titre>La Peste</titre>
+        <auteur>Albert Camus</auteur>
+        <annee>1947</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0009" copy-id="C1" statut="disponible">
+        <titre>Le Rouge et le Noir</titre>
+        <auteur>Stendhal</auteur>
+        <annee>1830</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0010" copy-id="C1" statut="disponible">
+        <titre>Notre-Dame de Paris</titre>
+        <auteur>Victor Hugo</auteur>
+        <annee>1831</annee>
+        <genre>Roman historique</genre>
+    </livre>
+    <livre isbn="978-0011" copy-id="C1" statut="disponible">
+        <titre>Le Nom de la rose</titre>
+        <auteur>Umberto Eco</auteur>
+        <annee>1980</annee>
+        <genre>Policier</genre>
+    </livre>
+    <livre isbn="978-0012" copy-id="C1" statut="emprunte">
+        <titre>Crime et Châtiment</titre>
+        <auteur>Fiodor Dostoïevski</auteur>
+        <annee>1866</annee>
+        <genre>Psychologie</genre>
+    </livre>
+    <livre isbn="978-0013" copy-id="C1" statut="disponible">
+        <titre>Le Seigneur des Anneaux</titre>
+        <auteur>J.R.R. Tolkien</auteur>
+        <annee>1954</annee>
+        <genre>Fantastique</genre>
+    </livre>
+    <livre isbn="978-0014" copy-id="C1" statut="disponible">
+        <titre>Don Quichotte</titre>
+        <auteur>Miguel de Cervantes</auteur>
+        <annee>1605</annee>
+        <genre>Aventure</genre>
+    </livre>
+    <livre isbn="978-0015" copy-id="C1" statut="emprunte">
+        <titre>Dracula</titre>
+        <auteur>Bram Stoker</auteur>
+        <annee>1897</annee>
+        <genre>Horreur</genre>
+    </livre>
+    <livre isbn="978-0016" copy-id="C1" statut="disponible">
+        <titre>Frankenstein</titre>
+        <auteur>Mary Shelley</auteur>
+        <annee>1818</annee>
+        <genre>Science-fiction</genre>
+    </livre>
+    <livre isbn="978-0017" copy-id="C1" statut="disponible">
+        <titre>Le Vieil Homme et la Mer</titre>
+        <auteur>Ernest Hemingway</auteur>
+        <annee>1952</annee>
+        <genre>Drame</genre>
+    </livre>
+    <livre isbn="978-0018" copy-id="C1" statut="emprunte">
+        <titre>Fahrenheit 451</titre>
+        <auteur>Ray Bradbury</auteur>
+        <annee>1953</annee>
+        <genre>Dystopie</genre>
+    </livre>
+    <livre isbn="978-0019" copy-id="C1" statut="disponible">
+        <titre>Bel-Ami</titre>
+        <auteur>Guy de Maupassant</auteur>
+        <annee>1885</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0020" copy-id="C1" statut="disponible">
+        <titre>Madame Bovary</titre>
+        <auteur>Gustave Flaubert</auteur>
+        <annee>1857</annee>
+        <genre>Roman réaliste</genre>
+    </livre>
 </livres>

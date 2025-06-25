@@ -1,51 +1,14 @@
 import xml.etree.ElementTree as et
 class Livre :
-    __slots__ =["__copy_id","__isbn","__titre","__auteur","__annee","__genre"]
-    def __init__(self):
-        self.__copy_id
-        self.__isbn
-        self.__titre
-        self.__auteur
-        self.__annee
-        self.__genre
-
-    @property
-    def copy_id(self):
-        return f"{self.__copy_id}"
-    @copy_id.setter 
-    def copy_id(self,value):
-        self.__copy_id=value
-    @property
-    def isbn(self):
-        return f"{self.__isbn}"
-    @isbn.setter
-    def isbn(self,value):
-        self.__isbn=value
-    @property
-    def titre(self):
-        return f"{self.__titre}"
-    @titre.setter
-    def titre(self,value):
-        self.__titre = value
-
-    @property
-    def auteur(self):
-        return f"{self.__auteur}"
-    @auteur.setter
-    def auteur(self,value):
-        self.__auteur=value
-    @property
-    def annee(self):
-        return f"{self.annee}"
-    @annee.setter
-    def annee(self,value):
-        self.__annee=value
-    @property
-    def genre (self):
-        return f"{self.__genre}"
-    @genre.setter
-    def genre(self,value):
-        self.__genre = value
+    __slots__ =["copy_id","isbn","titre","auteur","annee","genre","statut"]
+    def __init__(self,copy_id="",isbn="",titre="",auteur="",annee="",genre="",statut="disponible"):
+        self.copy_id = copy_id
+        self.isbn=isbn
+        self.titre=titre
+        self.auteur=auteur
+        self.annee=annee
+        self.genre=genre
+        self.statut=statut
     
 class LivreDAO :
     __storage_file_path ="data/livres.xml"
@@ -94,18 +57,51 @@ class LivreDAO :
                 targeted_livre = livre
         return targeted_livre
     
-
+    def count_copies(self, isbn):
+        root = self.__tree.getroot()
+        return sum(1 for livre in root.findall("livre") if livre.get("isbn") == isbn)
+    
     def emprunter(self,id):
         targeted_livre = self.rechercher(id)
         targeted_livre.set("statut","emprunte")
         self.__tree.write(LivreDAO.__storage_file_path)
 
-    def livre_from_element(elem):
+    def livre_from_element(self,elem):
         livre = Livre()
         livre.copy_id = elem.get("copy-id")
         livre.isbn = elem.get("isbn")
+        livre.statut = elem.get("statut")
         livre.titre = elem.find("titre").text
         livre.auteur = elem.find("auteur").text
         livre.annee = elem.find("annee").text
         livre.genre = elem.find("genre").text
         return livre
+
+    def search(self, param, key):
+        param = param.lower()
+        key = key.lower()
+        root = self.__tree.getroot()
+        results = []
+
+        for elem in root.findall("livre"):
+            livre = self.livre_from_element(elem)
+
+            if param in ["titre", "auteur", "nom", "date"]:
+                value = ""
+                if param == "titre":
+                    value = livre.titre
+                elif param in ["auteur", "nom"]:
+                    value = livre.auteur
+                elif param == "date":
+                    value = str(livre.annee)
+
+                if key in value.lower():
+                    results.append(livre)
+
+            elif param == "isbn" and key == livre.isbn.lower():
+                results.append(livre)
+
+            elif param == "copy-id" and key == livre.copy_id.lower():
+                results.append(livre)
+
+        return results

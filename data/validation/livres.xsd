@@ -17,9 +17,9 @@
                             <xs:element name="annee" type="xs:integer"></xs:element>
                             <xs:element name="genre" type="xs:string"></xs:element>
                         </xs:sequence>
-                        <xs:attribute name="isbn" type="xs:string"></xs:attribute>
-                        <xs:attribute name="copy-id" type="xs:string"></xs:attribute>
-                        <xs:attribute name="statut" type="statut-type"></xs:attribute>
+                        <xs:attribute name="isbn" type="xs:string" use="required"></xs:attribute>
+                        <xs:attribute name="copy-id" type="xs:string" use="required"></xs:attribute>
+                        <xs:attribute name="statut" type="statut-type" use="required"></xs:attribute>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
