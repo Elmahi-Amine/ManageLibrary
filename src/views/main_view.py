@@ -49,7 +49,8 @@ class MainView(tk.Frame):
                             command=self.controller.show_Home_view)
         home_btn.place(x=0, y=50, width=self.menu_width, height=40)
 
-        members_btn = tk.Button(self.menu_frame, text="Membres", **btn_style)
+        members_btn = tk.Button(self.menu_frame, text="Membres", **btn_style,
+                            command=self.controller.show_membre_view)
         members_btn.place(x=0, y=90, width=self.menu_width, height=40)
 
         livres_btn = tk.Button(self.menu_frame, text="Livres",**btn_style,

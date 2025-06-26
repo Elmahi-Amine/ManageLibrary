@@ -1,6 +1,7 @@
 from views.main_view import MainView 
 from views.home_view import HomeView
 from views.livre_view import LivreView
+from views.membre_view import MembreView
 class AppController:
     def __init__(self, root):
         self.root = root
@@ -27,6 +28,13 @@ class AppController:
         livre_view.pack(fill="both",expand=True)
         self.hide_menu()
 
+    def show_membre_view(self):
+        self.clear_content()
+        self.update_current_view_label("Membre")
+        membre_view = MembreView(self.view.content_area)
+        membre_view.pack(fill="both",expand=True)
+        self.hide_menu()
+        
     def clear_content(self):
         for widget in self.view.content_area.winfo_children():
             widget.destroy()
