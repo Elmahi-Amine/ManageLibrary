@@ -1,11 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<membres xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="validation/membres.xsd">
-    <membre id="13352">
-        <nom>amine</nom>
-        <list-livres-empr>
-            <copy id="32385" isbn="2984"></copy>
-            <copy id="23525" isbn="23523"></copy>
-        </list-livres-empr>
+<membres>
+    <membre id="M001">
+        <nom>Ali Hmida</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M002">
+        <nom>Sarah Benali</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M003">
+        <nom>Yassine El Amrani</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M004">
+        <nom>Rania Lahlou</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M005">
+        <nom>Omar Raji</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M006">
+        <nom>Nadia Skalli</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M007">
+        <nom>Karim Berrada</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M008">
+        <nom>Leila Tahiri</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M009">
+        <nom>Soufiane Ziani</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M010">
+        <nom>Fatima Zahra</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M011">
+        <nom>Hassan Daki</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M012">
+        <nom>Salma Idrissi</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M013">
+        <nom>Adil Oukacha</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M014">
+        <nom>Imane Bakkali</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M015">
+        <nom>Mohamed Belkadi</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M016">
+        <nom>Yasmine Taibi</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M017">
+        <nom>Amine Chafik</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M018">
+        <nom>Rachid Moujahid</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M019">
+        <nom>Sara El Idrissi</nom>
+        <list-livres-empr/>
+    </membre>
+    <membre id="M020">
+        <nom>Anas Bennis</nom>
+        <list-livres-empr/>
     </membre>
 </membres>

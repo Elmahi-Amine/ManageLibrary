@@ -52,7 +52,7 @@ class MembreDAO:
         # ajouter le tout dans root
         root.append(new_membre)
         self.__tree.write(MembreDAO.__storage_file_path)
-    #supprimer le membre avec le id donnee
+    # supprimer le membre avec le id donnee
     def supprimer(self,id):
         targeted_membre , root = self.rechercher(id)
         if(targeted_membre !=None):

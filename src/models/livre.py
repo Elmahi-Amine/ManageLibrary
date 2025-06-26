@@ -112,3 +112,10 @@ class LivreDAO :
                 results.append(livre)
 
         return results
+    def emprunter(self,isbn,copy_id):
+        targeted_livre=self.rechercher_id_isbn(isbn,copy_id)
+        check_status=targeted_livre.get("statut")
+        if(check_status=="disponible"):
+            targeted_livre.set("statut","emprunte")
+
+            

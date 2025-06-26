@@ -12,8 +12,8 @@
                                     <xs:sequence>
                                         <xs:element name="copy" maxOccurs="unbounded" minOccurs="0">
                                             <xs:complexType>
-                                                <xs:attribute name="id" type="xs:string"></xs:attribute>
-                                                <xs:attribute name="isbn" type="xs:string"></xs:attribute>
+                                                <xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
+                                                <xs:attribute name="isbn" type="xs:string" use="required"></xs:attribute>
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
