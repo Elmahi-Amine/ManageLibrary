@@ -1,31 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <livres>
     <livre isbn="978-0001" copy-id="C1" statut="disponible">
         <titre>Le Petit Prince</titre>
-        <auteur>Antoine de Saint-Exupéry</auteur>
+        <auteur>Antoine de Saint-Exup&#233;ry</auteur>
         <annee>1943</annee>
         <genre>Fiction</genre>
     </livre>
     <livre isbn="978-0002" copy-id="C1" statut="emprunte">
-        <titre>L'Étranger</titre>
+        <titre>L'&#201;tranger</titre>
         <auteur>Albert Camus</auteur>
         <annee>1942</annee>
         <genre>Philosophie</genre>
     </livre>
-    <livre isbn="978-0003" copy-id="C1" statut="disponible">
+    <livre isbn="978-0003" copy-id="C3" statut="disponible">
         <titre>1984</titre>
         <auteur>George Orwell</auteur>
         <annee>1949</annee>
         <genre>Dystopie</genre>
     </livre>
-    <livre isbn="978-0003" copy-id="C2" statut="disponible">
+        <livre isbn="978-0003" copy-id="C4" statut="disponible">
         <titre>1984</titre>
         <auteur>George Orwell</auteur>
         <annee>1949</annee>
         <genre>Dystopie</genre>
     </livre>
-    <livre isbn="978-0005" copy-id="C1" statut="emprunte">
-        <titre>Harry Potter à l'école des sorciers</titre>
+        <livre isbn="978-0003" copy-id="C5" statut="disponible">
+        <titre>1984</titre>
+        <auteur>George Orwell</auteur>
+        <annee>1949</annee>
+        <genre>Dystopie</genre>
+    </livre>
+        <livre isbn="978-0003" copy-id="C6" statut="disponible">
+        <titre>1984</titre>
+        <auteur>George Orwell</auteur>
+        <annee>1949</annee>
+        <genre>Dystopie</genre>
+    </livre>
+        <livre isbn="978-0003" copy-id="C7" statut="disponible">
+        <titre>1984</titre>
+        <auteur>George Orwell</auteur>
+        <annee>1949</annee>
+        <genre>Dystopie</genre>
+    </livre>
+        <livre isbn="978-0003" copy-id="C8" statut="disponible">
+        <titre>1984</titre>
+        <auteur>George Orwell</auteur>
+        <annee>1949</annee>
+        <genre>Dystopie</genre>
+    </livre>
+        <livre isbn="978-0003" copy-id="C9" statut="disponible">
+        <titre>1984</titre>
+        <auteur>George Orwell</auteur>
+        <annee>1949</annee>
+        <genre>Dystopie</genre>
+    </livre>
+        <livre isbn="978-0005" copy-id="C1" statut="emprunte">
+        <titre>Harry Potter &#224; l'&#233;cole des sorciers</titre>
         <auteur>J.K. Rowling</auteur>
         <annee>1997</annee>
         <genre>Fantastique</genre>
@@ -37,7 +66,7 @@
         <genre>Aventure</genre>
     </livre>
     <livre isbn="978-0007" copy-id="C1" statut="disponible">
-        <titre>Les Misérables</titre>
+        <titre>Les Mis&#233;rables</titre>
         <auteur>Victor Hugo</auteur>
         <annee>1862</annee>
         <genre>Drame</genre>
@@ -67,8 +96,8 @@
         <genre>Policier</genre>
     </livre>
     <livre isbn="978-0012" copy-id="C1" statut="emprunte">
-        <titre>Crime et Châtiment</titre>
-        <auteur>Fiodor Dostoïevski</auteur>
+        <titre>Crime et Ch&#226;timent</titre>
+        <auteur>Fiodor Dosto&#239;evski</auteur>
         <annee>1866</annee>
         <genre>Psychologie</genre>
     </livre>
@@ -118,6 +147,6 @@
         <titre>Madame Bovary</titre>
         <auteur>Gustave Flaubert</auteur>
         <annee>1857</annee>
-        <genre>Roman réaliste</genre>
+        <genre>Roman r&#233;aliste</genre>
     </livre>
-</livres>
+<livre copy-id="C1" isbn="83838-38" statut="disponible"><titre>le chat</titre><auteur>ana</auteur><annee>2023</annee><genre>horreur</genre></livre></livres>

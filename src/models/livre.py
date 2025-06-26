@@ -36,25 +36,32 @@ class LivreDAO :
         root.append(new_livre)
         self.__tree.write(LivreDAO.__storage_file_path)
     
-    def rechercher_id_isbn(self, copy_id, isbn):
-        targeted_livre = None
+    def rechercher_id_isbn(self,  isbn, copy_id):
         root = self.__tree.getroot()
         list_des_livres = root.findall("livre")
         for livre in list_des_livres :
             current_copy_id = livre.get("copy-id")
             current_isbn = livre.get("isbn")
             if current_copy_id== copy_id and current_isbn == isbn :
-                targeted_livre = livre
-        return targeted_livre
+                return livre
+    
+    def supprimer(self,isbn,copy_id):
+        root = self.__tree.getroot()
+        targeted_livre = self.rechercher_id_isbn(isbn,copy_id)
+        print(f"[supprimer] :{targeted_livre.get("isbn")} ")
+        root.remove(targeted_livre)
+        self.__tree.write(LivreDAO.__storage_file_path)
+
 
     def rechercher_titre(self, titre):
-        targeted_livre = None
+        
         root = self.__tree.getroot()
         list_des_livres = root.findall("livre")
         for livre in list_des_livres :
             current_titre = livre.find("titre")
             if current_titre.text == titre :
                 targeted_livre = livre
+                break
         return targeted_livre
     
     def count_copies(self, isbn):

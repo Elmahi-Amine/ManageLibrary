@@ -11,7 +11,7 @@ class LivreView(tk.Frame):
         self.search_key = tk.StringVar()
         self.search_method = tk.StringVar(value="")
 
-        self.search_bar = tk.Frame(self, bg="#dbdbdb", height=50)
+        self.search_bar = tk.Frame(self, bg="#dbdbdb", height=50,padx=10)
         self.search_bar.pack(fill="x", side="top")
 
         # Style for the Combobox
@@ -24,6 +24,15 @@ class LivreView(tk.Frame):
                         borderwidth=0,
                         padding=5)
         style.map('TCombobox', fieldbackground=[('readonly', 'white')])
+
+        self.ajouter_btn = tk.Button(
+            self.search_bar,
+            text="Ajouter",
+            command=lambda: self.controller.create_add_book_form()
+            
+        )
+
+        self.ajouter_btn.pack(side="left",fill="x",expand=True,padx=(0, 10), pady=5)
 
         # Combobox for method
         self.method_choice = ttk.Combobox(
@@ -59,8 +68,8 @@ class LivreView(tk.Frame):
             command=self.controller.perform_search,
             bg="white",
             relief="flat",
-            width=35,
-            height=35
+            width=25,
+            height=25
         )
         
         self.search_button.pack(side="right", pady=5)

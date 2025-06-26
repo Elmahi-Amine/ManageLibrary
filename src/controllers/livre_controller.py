@@ -1,8 +1,9 @@
 from typing import TYPE_CHECKING
-from models.livre import LivreDAO
+from models.livre import Livre, LivreDAO
 
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 if TYPE_CHECKING :
     from views.livre_view import LivreView
 class LivreController :
@@ -16,59 +17,164 @@ class LivreController :
         print(f"[search] : value1.titre : {livredao.search(parameter,_key)[0].titre}")
         self.afficher_table_livres(self.view.search_result_frame,livredao.search(parameter,_key))
 
-        
-
-
-    def afficher_table_livres(self,parent, search_results):
-        # Clear the parent widget (if anything exists)
+    def afficher_table_livres(self, parent, search_results):
         for widget in parent.winfo_children():
             widget.destroy()
-        
-        # Create the Treeview (table)
-        colonnes = ("isbn", "copy_id", "titre", "auteur", "annee", "genre","copie_id","statut","copies_count")
-        table = ttk.Treeview(parent, columns=colonnes, show="headings")
-        
-        # Set column headings
-        table.heading("isbn", text="ISBN")
-        table.heading("copy_id", text="Copy ID")
-        table.heading("titre", text="Titre")
-        table.heading("auteur", text="Auteur")
-        table.heading("annee", text="Année")
-        table.heading("genre", text="Genre")
-        table.heading("copie_id", text="Copie ID")
-        table.heading("statut",text="statut")
-        table.heading("copies_count",text="nbr copies")
 
-        # Optional: Set column widths
+        colonnes = ("isbn", "copy_id", "titre", "auteur", "annee", "genre", "copie_id", "statut", "copies_count")
+        table = ttk.Treeview(parent, columns=colonnes, show="headings", selectmode="extended")  # enable multiple selection
+
         for col in colonnes:
+            table.heading(col, text=col.capitalize())
             table.column(col, width=100)
 
-        # Insert rows
         dao = LivreDAO()
         for item in search_results:
-            livre = item
             count = dao.count_copies(item.isbn)
-            print("result titre : ",livre.titre)
             table.insert("", "end", values=(
-                livre.isbn,
-                livre.copy_id,
-                livre.titre,
-                livre.auteur,
-                livre.annee,
-                livre.genre,
-                livre.copy_id,
-                livre.statut,
-                count
+                item.isbn, item.copy_id, item.titre, item.auteur,
+                item.annee, item.genre, item.copy_id, item.statut, count
             ))
 
-        # Add a vertical scrollbar
+        # Add vertical scrollbar
         scrollbar = ttk.Scrollbar(parent, orient="vertical", command=table.yview)
         table.configure(yscrollcommand=scrollbar.set)
-        
-        # Layout
         table.grid(row=0, column=0, sticky="nsew")
         scrollbar.grid(row=0, column=1, sticky="ns")
 
-        # Make the table expandable inside the parent
         parent.grid_rowconfigure(0, weight=1)
         parent.grid_columnconfigure(0, weight=1)
+
+        # Create context menu
+        context_menu = tk.Menu(table, tearoff=0)
+        context_menu.add_command(label="Supprimer", command=lambda: self._handle_action("supprimer", table))
+        context_menu.add_command(label="Emprunter", command=lambda: self._handle_action("emprunter", table))
+        context_menu.add_command(label="Retourner", command=lambda: self._handle_action("retourner", table))
+
+        def show_context_menu(event):
+            selected_item = table.identify_row(event.y)
+            if selected_item:
+                if selected_item not in table.selection():
+                    table.selection_set(selected_item)
+                context_menu.tk_popup(event.x_root, event.y_root)
+
+        table.bind("<Button-3>", show_context_menu) 
+
+    def _handle_action(self, action, table):
+        selected_items = table.selection()
+        print(f"[{action}] selected rows:")
+        for item_id in selected_items:
+            row_values = table.item(item_id, "values")
+            print(f" - {row_values}")
+        if action == "supprimer":
+            if not messagebox.askyesno("Confirmation", "Are you sure you want to delete selected items?"):
+                return    
+            dao = LivreDAO()
+            for item_id in selected_items:
+                values = table.item(item_id, "values")
+                print(f"[handle action] {values[0]} , {values[1]}")
+                dao.supprimer(values[0],values[1])
+                self.perform_search() #refrech the table
+    def create_add_book_form(self):
+        parent = self.view
+
+        # Clear previous content
+        for widget in parent.winfo_children():
+            widget.destroy()
+
+        # Apply modern styles
+        style = ttk.Style()
+        style.theme_use("default")
+
+        bg_color = "white"
+        fg_color = "black"
+        entry_bg = "#dbdbdb"
+        button_color = "#dbdbdb"
+        hover_color = "#c0c0c0"
+
+        parent.configure(bg=bg_color)
+
+        style.configure("TEntry",
+            fieldbackground=entry_bg,
+            background=entry_bg,
+            foreground=fg_color,
+            borderwidth=0,
+            padding=5
+        )
+
+        style.configure("TLabel",
+            background=bg_color,
+            foreground=fg_color,
+            font=("Segoe UI", 10)
+        )
+
+        style.configure("TButton",
+            background=button_color,
+            foreground=fg_color,
+            borderwidth=0,
+            padding=(10, 5),
+            font=("Segoe UI", 10, "bold")
+        )
+        style.map("TButton", background=[("active", hover_color)])
+
+        fields = {
+            "ISBN": tk.StringVar(),
+            "Copy ID": tk.StringVar(),
+            "Titre": tk.StringVar(),
+            "Auteur": tk.StringVar(),
+            "Année": tk.StringVar(),
+            "Genre": tk.StringVar(),
+            "Statut": tk.StringVar(value="disponible")
+        }
+
+        form_frame = tk.Frame(parent, bg=bg_color)
+        form_frame.pack(padx=40, pady=40, anchor="center")
+
+        for i, (label_text, var) in enumerate(fields.items()):
+            label = ttk.Label(form_frame, text=label_text)
+            entry = ttk.Entry(form_frame, textvariable=var)
+            label.grid(row=i, column=0, sticky="e", padx=10, pady=8)
+            entry.grid(row=i, column=1, sticky="ew", padx=10, pady=8)
+
+        form_frame.columnconfigure(1, weight=1)
+
+        def restore_livre_view():
+            from views.livre_view import LivreView
+            for widget in parent.winfo_children():
+                widget.destroy()
+            livre_view = LivreView(parent)
+            livre_view.pack(fill="both", expand=True)
+
+        def ajouter_livre():
+            livre = Livre(
+                copy_id=fields["Copy ID"].get(),
+                isbn=fields["ISBN"].get(),
+                titre=fields["Titre"].get(),
+                auteur=fields["Auteur"].get(),
+                annee=fields["Année"].get(),
+                genre=fields["Genre"].get(),
+                statut=fields["Statut"].get()
+            )
+
+            if not (livre.copy_id and livre.isbn and livre.titre):
+                messagebox.showerror("Erreur", "ISBN, Copy ID et Titre sont obligatoires.")
+                return
+
+            dao = LivreDAO()
+            dao.ajouter(livre)
+            messagebox.showinfo("Succès", "Livre ajouté avec succès.")
+            restore_livre_view()  # ✅ Return to LivreView after adding
+
+        def annuler():
+            if messagebox.askyesno("Annuler", "Voulez-vous annuler l’ajout ?"):
+                restore_livre_view()  # ✅ Return to LivreView after cancel
+
+        # Add and Cancel buttons
+        button_frame = tk.Frame(form_frame, bg=bg_color)
+        button_frame.grid(row=len(fields), column=0, columnspan=2, pady=(20, 0))
+
+        add_button = ttk.Button(button_frame, text="Ajouter", command=ajouter_livre)
+        cancel_button = ttk.Button(button_frame, text="Annuler", command=annuler)
+
+        add_button.pack(side="left", padx=10)
+        cancel_button.pack(side="left", padx=10)
