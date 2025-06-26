@@ -115,7 +115,7 @@ class MembreDAO:
 
             if param == "id":
                 value = membre.id
-            elif param == "name":
+            elif param == "nom":
                 value = membre.nom
 
             if key in value.lower():

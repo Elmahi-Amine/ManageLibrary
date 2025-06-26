@@ -1,5 +1,5 @@
 from typing import TYPE_CHECKING
-from models.membre import Membre, MembreDAO  # You must define these
+from models.membre import Membre, MembreDAO 
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
@@ -10,6 +10,10 @@ if TYPE_CHECKING:
 class MembreController:
     def __init__(self, view: "MembreView"):
         self.view = view
+        self.side_panel = None  # Reference to the side panel for later removal
+        self.overlay= None
+        self.side_panel_visible = False
+
 
     def perform_membre_search(self):
         _key = self.view.search_key.get()
@@ -17,7 +21,9 @@ class MembreController:
         membre_dao = MembreDAO()
         print(f"[perform search]: parameter: {parameter}, key: {_key}")
         results = membre_dao.search(parameter, _key)
+        print(f"[search results]: {results}")
         self.afficher_table_membres(self.view.search_result_frame, results)
+        
 
     def afficher_table_membres(self, parent, search_results):
         for widget in parent.winfo_children():
@@ -55,6 +61,7 @@ class MembreController:
                 context_menu.tk_popup(event.x_root, event.y_root)
 
         table.bind("<Button-3>", show_context_menu)
+        table.bind("<Double-1>", lambda event: self._show_livre_emprunt_panel())
 
     def _handle_action(self, action, table):
         selected_items = table.selection()
@@ -62,6 +69,7 @@ class MembreController:
         for item_id in selected_items:
             row_values = table.item(item_id, "values")
             print(f" - {row_values}")
+        
         if action == "supprimer":
             if not messagebox.askyesno("Confirmation", "Are you sure you want to delete selected members?"):
                 return
@@ -70,6 +78,8 @@ class MembreController:
                 values = table.item(item_id, "values")
                 dao.supprimer(values[0])  # assuming ID is enough
             self.perform_membre_search()
+        elif action == "voir_livres_emprnt":
+            self._show_livre_emprunt_panel()
 
     def create_add_membre_form(self):
         parent = self.view
@@ -142,3 +152,64 @@ class MembreController:
 
         add_button.pack(side="left", padx=10)
         cancel_button.pack(side="left", padx=10)
+
+    def _show_livre_emprunt_panel(self):
+        if self.side_panel_visible:
+            return
+
+        self.view.update_idletasks()  # Ensure accurate width/height
+        view_width = self.view.winfo_width()
+        view_height = self.view.winfo_height()
+
+        self.side_panel_visible = True
+
+        # Create an overlay that closes the panel when clicked
+        self.overlay = tk.Frame(self.view, bg="", width=view_width, height=view_height)
+        self.overlay.place(x=0, y=0)
+        self.overlay.bind("<Button-1>", lambda e: self._hide_livre_emprunt_panel())
+
+        # Create the sliding panel
+        panel_width = 300
+        panel = tk.Frame(self.view, bg="white", width=panel_width, height=view_height)
+        panel.place(x=view_width, y=0)
+
+        label = tk.Label(panel, text="no books", font=("Segoe UI", 12), bg="white")
+        label.pack(padx=20, pady=20)
+
+        self.side_panel = panel
+        self._animate_slide_in(panel, target_x=view_width - panel_width)
+
+    def _animate_slide_in(self, panel, target_x, step=20):
+        def step_animation():
+            current_x = panel.winfo_x()
+            if current_x > target_x:
+                new_x = max(current_x - step, target_x)
+                panel.place(x=new_x, y=0)
+                panel.after(10, step_animation)
+            else:
+                panel.place(x=target_x, y=0)  # Snap to final position
+
+        step_animation()
+
+    def _hide_livre_emprunt_panel(self):
+        if not self.side_panel or not self.side_panel_visible:
+            return
+
+        view_width = self.view.winfo_width()
+
+        def step_animation():
+            current_x = self.side_panel.winfo_x()
+            if current_x < view_width:
+                new_x = min(current_x + 20, view_width)
+                self.side_panel.place(x=new_x, y=0)
+                self.side_panel.after(10, step_animation)
+            else:
+                self.side_panel.destroy()
+                self.side_panel = None
+                self.side_panel_visible = False
+
+                if self.overlay:
+                    self.overlay.destroy()
+                    self.overlay = None
+
+        step_animation()
