@@ -5,7 +5,10 @@
     </membre>
     <membre id="M003">
         <nom>Yassine El Amrani</nom>
-        <list-livres-empr />
+        <list-livres-empr>
+            <copy id="c1" isbn="298393" ></copy>
+            <copy id="c2" isbn="232932" ></copy>
+        </list-livres-empr>
     </membre>
     <membre id="M004">
         <nom>Rania Lahlou</nom>
@@ -75,4 +78,4 @@
         <nom>Anas Bennis</nom>
         <list-livres-empr />
     </membre>
-<membre id="M021"><nom>hmida ali</nom><list-livres-empr /></membre></membres>
+</membres>

@@ -7,6 +7,77 @@ class Membre:
         self.nom = nom
         self.copies = copies if copies is not None else []  # List of (isbn, copy_id) tuples
 
+
+class MembreDAO:
+    __storage_file_path = "data/membres.xml"
+
+    def __init__(self):
+        self.__tree = et.parse(MembreDAO.__storage_file_path)
+
+    def ajouter(self, membre: Membre):
+        root = self.__tree.getroot()
+        membre_elem = et.Element("membre")
+        membre_elem.set("id", membre.id)
+
+        nom_elem = et.SubElement(membre_elem, "nom")
+        nom_elem.text = membre.nom
+
+        list_livres_elem = et.SubElement(membre_elem, "list-livres-empr")
+        for copy_id, isbn in membre.copies:
+            copy_elem = et.SubElement(list_livres_elem, "copy")
+            copy_elem.set("id", copy_id)
+            copy_elem.set("isbn", isbn)
+
+        root.append(membre_elem)
+        self.__tree.write(MembreDAO.__storage_file_path)
+
+    def supprimer(self, membre_id: str):
+        root = self.__tree.getroot()
+        membre_elem = self._find_by_id(membre_id)
+        root.remove(membre_elem)
+        self.__tree.write(MembreDAO.__storage_file_path)
+
+    def search(self, param, key):
+        param = param.lower()
+        key = key.lower()
+        root = self.__tree.getroot()
+        results = []
+
+        for membre_elem in root.findall("membre"):
+            membre = self.membre_from_element(membre_elem)
+            value = ""
+
+            if param == "id":
+                value = membre.id
+            elif param == "nom":
+                value = membre.nom
+
+            if key in value.lower():
+                results.append(membre)
+
+        return results
+
+    def _find_by_id(self, membre_id):
+        root = self.__tree.getroot()
+        for membre_elem in root.findall("membre"):
+            if membre_elem.get("id") == membre_id:
+                return membre_elem
+
+    def membre_from_element(self, elem):
+        membre = Membre()
+        membre.id = elem.get("id")
+        membre.nom = elem.find("nom").text if elem.find("nom") is not None else ""
+        membre.copies = []
+
+        list_livres_elem = elem.find("list-livres-empr")
+        if list_livres_elem is not None:
+            for copy_elem in list_livres_elem.findall("copy"):
+                copy_id = copy_elem.get("id")
+                isbn = copy_elem.get("isbn")
+                membre.copies.append((copy_id, isbn))
+
+        return membre
+
 # class MembreDAO:
 #     __storage_file_path ="data/membres.xml"
 #     def __init__(self):
@@ -72,77 +143,4 @@ class Membre:
 #             copy = et.SubElement(list_livre_empr,"copy")
 #             copy.set("id",livre.copy_id)
 #             copy.set("isbn",livre.isbn)
-
-class MembreDAO:
-    __storage_file_path = "data/membres.xml"
-
-    def __init__(self):
-        self.__tree = et.parse(MembreDAO.__storage_file_path)
-
-    def ajouter(self, membre: Membre):
-        root = self.__tree.getroot()
-        membre_elem = et.Element("membre")
-        membre_elem.set("id", membre.id)
-
-        nom_elem = et.SubElement(membre_elem, "nom")
-        nom_elem.text = membre.nom
-
-        list_livres_elem = et.SubElement(membre_elem, "list-livres-empr")
-        for copy_id, isbn in membre.copies:
-            copy_elem = et.SubElement(list_livres_elem, "copy")
-            copy_elem.set("id", copy_id)
-            copy_elem.set("isbn", isbn)
-
-        root.append(membre_elem)
-        self.__tree.write(MembreDAO.__storage_file_path)
-
-    def supprimer(self, membre_id: str):
-        root = self.__tree.getroot()
-        membre_elem = self._find_by_id(membre_id)
-        if membre_elem is not None:
-            root.remove(membre_elem)
-            self.__tree.write(MembreDAO.__storage_file_path)
-
-    def search(self, param, key):
-        param = param.lower()
-        key = key.lower()
-        root = self.__tree.getroot()
-        results = []
-
-        for membre_elem in root.findall("membre"):
-            membre = self.membre_from_element(membre_elem)
-            value = ""
-
-            if param == "id":
-                value = membre.id
-            elif param == "nom":
-                value = membre.nom
-
-            if key in value.lower():
-                results.append(membre)
-
-        return results
-
-    def _find_by_id(self, membre_id):
-        root = self.__tree.getroot()
-        for membre_elem in root.findall("membre"):
-            if membre_elem.get("id") == membre_id:
-                return membre_elem
-        return None
-
-    def membre_from_element(self, elem):
-        membre = Membre()
-        membre.id = elem.get("id", "")
-        membre.nom = elem.find("nom").text if elem.find("nom") is not None else ""
-        membre.copies = []
-
-        list_livres_elem = elem.find("list-livres-empr")
-        if list_livres_elem is not None:
-            for copy_elem in list_livres_elem.findall("copy"):
-                copy_id = copy_elem.get("id")
-                isbn = copy_elem.get("isbn")
-                membre.copies.append((copy_id, isbn))
-
-        return membre
-
             

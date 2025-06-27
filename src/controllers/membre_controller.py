@@ -61,7 +61,6 @@ class MembreController:
                 context_menu.tk_popup(event.x_root, event.y_root)
 
         table.bind("<Button-3>", show_context_menu)
-        table.bind("<Double-1>", lambda event: self._show_livre_emprunt_panel())
 
     def _handle_action(self, action, table):
         selected_items = table.selection()
@@ -75,11 +74,15 @@ class MembreController:
                 return
             dao = MembreDAO()
             for item_id in selected_items:
-                values = table.item(item_id, "values")
+                
                 dao.supprimer(values[0])  # assuming ID is enough
             self.perform_membre_search()
         elif action == "voir_livres_emprnt":
-            self._show_livre_emprunt_panel()
+            if len(selected_items)>1 or len(selected_items)== 0:
+                return 
+            for itm in selected_items:
+                values = table.item(item_id, "values")
+                self._show_livre_emprunt_panel(values[0])
 
     def create_add_membre_form(self):
         parent = self.view
@@ -153,63 +156,65 @@ class MembreController:
         add_button.pack(side="left", padx=10)
         cancel_button.pack(side="left", padx=10)
 
-    def _show_livre_emprunt_panel(self):
-        if self.side_panel_visible:
+    def _show_livre_emprunt_panel(self, person_id):
+        print(f"[show livres-membre]: id parameter is :{person_id} ")
+        
+        popup = tk.Toplevel(self.view)
+        popup.title(f"Livres empruntés - Membre {person_id}")
+        popup.geometry("400x300")
+        popup.transient(self.view)
+        popup.grab_set()
+        
+        frame = tk.Frame(popup)
+        frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        
+        columns = ("ID", "ISBN")
+        tree = ttk.Treeview(frame, columns=columns, show="headings")
+        
+        for col in columns:
+            tree.heading(col, text=col)
+            tree.column(col, width=180, anchor=tk.CENTER)
+        
+        dao = MembreDAO()
+        membre_element = dao._find_by_id(person_id)
+        if membre_element is None:
+            messagebox.showerror("Erreur", "Membre introuvable.")
+            popup.destroy()
             return
+        data = dao.membre_from_element(membre_element).copies
+        
+        for row in data:
+            tree.insert("", tk.END, values=row)
+        
+        scrollbar = ttk.Scrollbar(frame, orient=tk.VERTICAL, command=tree.yview)
+        tree.configure(yscroll=scrollbar.set)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        
+        # --- Context menu setup ---
+        context_menu = tk.Menu(popup, tearoff=0)
+        
+        def on_retourner():
+            selected = tree.selection()
+            if len(selected) != 1:
+                print("Please select exactly one row to retourner.")
+                return
+            row_values = tree.item(selected[0], "values")
+            print(f"[Retourner] Selected row: {row_values}")
+        
+        context_menu.add_command(label="Retourner", command=on_retourner)
+        
+        def show_context_menu(event):
+            # Select the row under the mouse pointer on right-click
+            iid = tree.identify_row(event.y)
+            if iid:
+                if iid not in tree.selection():
+                    tree.selection_set(iid)
+                context_menu.tk_popup(event.x_root, event.y_root)
+        
+        tree.bind("<Button-3>", show_context_menu)
+        
+        close_btn = ttk.Button(popup, text="Fermer", command=popup.destroy)
+        close_btn.pack(pady=5)
 
-        self.view.update_idletasks()  # Ensure accurate width/height
-        view_width = self.view.winfo_width()
-        view_height = self.view.winfo_height()
 
-        self.side_panel_visible = True
-
-        # Create an overlay that closes the panel when clicked
-        self.overlay = tk.Frame(self.view, bg="", width=view_width, height=view_height)
-        self.overlay.place(x=0, y=0)
-        self.overlay.bind("<Button-1>", lambda e: self._hide_livre_emprunt_panel())
-
-        # Create the sliding panel
-        panel_width = 300
-        panel = tk.Frame(self.view, bg="white", width=panel_width, height=view_height)
-        panel.place(x=view_width, y=0)
-
-        label = tk.Label(panel, text="no books", font=("Segoe UI", 12), bg="white")
-        label.pack(padx=20, pady=20)
-
-        self.side_panel = panel
-        self._animate_slide_in(panel, target_x=view_width - panel_width)
-
-    def _animate_slide_in(self, panel, target_x, step=20):
-        def step_animation():
-            current_x = panel.winfo_x()
-            if current_x > target_x:
-                new_x = max(current_x - step, target_x)
-                panel.place(x=new_x, y=0)
-                panel.after(10, step_animation)
-            else:
-                panel.place(x=target_x, y=0)  # Snap to final position
-
-        step_animation()
-
-    def _hide_livre_emprunt_panel(self):
-        if not self.side_panel or not self.side_panel_visible:
-            return
-
-        view_width = self.view.winfo_width()
-
-        def step_animation():
-            current_x = self.side_panel.winfo_x()
-            if current_x < view_width:
-                new_x = min(current_x + 20, view_width)
-                self.side_panel.place(x=new_x, y=0)
-                self.side_panel.after(10, step_animation)
-            else:
-                self.side_panel.destroy()
-                self.side_panel = None
-                self.side_panel_visible = False
-
-                if self.overlay:
-                    self.overlay.destroy()
-                    self.overlay = None
-
-        step_animation()
