@@ -122,5 +122,6 @@ class LivreDAO :
         check_status=targeted_livre.get("statut")
         if(check_status=="disponible"):
             targeted_livre.set("statut","emprunte")
-
+    def get_all_livre_elm(self):
+        return self.__tree.getroot().findall("livre")
             

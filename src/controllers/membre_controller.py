@@ -107,6 +107,7 @@ class MembreController:
 
         # Code here continues only after dialog is closed
         print("Borrowing dialog closed.")
+        
     def create_add_membre_form(self):
         parent = self.view
 

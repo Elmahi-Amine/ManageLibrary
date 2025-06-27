@@ -97,7 +97,16 @@ class MembreDAO:
                 list_livre_empr.remove(item)
         self.__tree.write(MembreDAO.__storage_file_path)
 
-
+    def get_all_membres(self):
+        result = []
+        root = self.__tree.getroot()
+        list_membre_elm = root.findall("membre")
+        for elm in list_membre_elm:
+            result.append(self.membre_from_element(elm))
+        return result
+    def get_all_membres_elm(self):
+        return self.__tree.getroot().findall("membre")
+    
 # class MembreDAO:
 #     __storage_file_path ="data/membres.xml"
 #     def __init__(self):

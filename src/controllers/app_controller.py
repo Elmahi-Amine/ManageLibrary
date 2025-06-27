@@ -1,5 +1,5 @@
 from views.main_view import MainView 
-from views.home_view import HomeView
+from controllers.home_controller  import HomeController
 from views.livre_view import LivreView
 from views.membre_view import MembreView
 class AppController:
@@ -16,9 +16,9 @@ class AppController:
 
     def show_Home_view(self):
         self.clear_content()
-        home_view = HomeView(self.view.content_area)
         self.update_current_view_label("Home")
-        home_view.pack(fill="both", expand=True)
+        home_controller = HomeController(self.view.content_area)
+        home_controller.view.pack(fill="both", expand=True)
         self.hide_menu()
         
     def show_livre_view(self):
