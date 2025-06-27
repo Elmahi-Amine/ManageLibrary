@@ -75,8 +75,28 @@ class MembreDAO:
                 copy_id = copy_elem.get("id")
                 isbn = copy_elem.get("isbn")
                 membre.copies.append((copy_id, isbn))
-
         return membre
+    
+    def emprunter(self,id,book_isbn, book_id):
+        targeted_membre= self._find_by_id(id)
+        if(targeted_membre!=None):
+            list_livre_empr= targeted_membre.find("list-livres-empr")
+            copy = et.SubElement(list_livre_empr,"copy")
+            copy.set("id",book_id)
+            copy.set("isbn",book_isbn)
+        self.__tree.write(MembreDAO.__storage_file_path)
+        
+    def retourner(self,id,book_isbn,book_id):
+        targeted_membre=self._find_by_id(id)
+        list_livre_empr= targeted_membre.find("list-livres-empr")
+        books = list_livre_empr.findall("copy")
+        for item in books :
+            item_isbn = item.get("isbn")
+            item_id = item.get("id")
+            if(book_isbn==item_isbn and book_id == item_id ):
+                list_livre_empr.remove(item)
+        self.__tree.write(MembreDAO.__storage_file_path)
+
 
 # class MembreDAO:
 #     __storage_file_path ="data/membres.xml"

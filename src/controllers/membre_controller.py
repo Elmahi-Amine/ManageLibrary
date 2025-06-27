@@ -74,16 +74,39 @@ class MembreController:
                 return
             dao = MembreDAO()
             for item_id in selected_items:
-                
+                values=table.item(item_id,"values")
                 dao.supprimer(values[0])  # assuming ID is enough
             self.perform_membre_search()
         elif action == "voir_livres_emprnt":
             if len(selected_items)>1 or len(selected_items)== 0:
                 return 
-            for itm in selected_items:
+            for item_id in selected_items:
                 values = table.item(item_id, "values")
                 self._show_livre_emprunt_panel(values[0])
+        elif action == "emprunter":
+            self.open_emprunt_dialog()
 
+    def open_emprunt_dialog(self):
+        # Get the top-level window from the current view
+        root_window = self.view.winfo_toplevel()
+
+        # Create a new Toplevel window as a modal dialog
+        dialog = tk.Toplevel(root_window)
+        dialog.title("📘 Emprunt")
+        dialog.geometry("600x400")
+        dialog.configure(bg="white")
+        dialog.transient(root_window)     # Show dialog on top of parent
+        dialog.grab_set()                 # Make it modal (block interaction with root)
+        
+        # Create the Emprunt controller (will auto-create the view)
+        from controllers.emprunt import EmpruntController
+        EmpruntController(dialog)
+
+        # Wait for the dialog to close
+        root_window.wait_window(dialog)
+
+        # Code here continues only after dialog is closed
+        print("Borrowing dialog closed.")
     def create_add_membre_form(self):
         parent = self.view
 
