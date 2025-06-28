@@ -1,12 +1,12 @@
 <livres>
     <livre isbn="978-0001" copy-id="C1" statut="disponible">
         <titre>Le Petit Prince</titre>
-        <auteur>Antoine de Saint-Exupéry</auteur>
+        <auteur>Antoine de Saint-Exup&#233;ry</auteur>
         <annee>1943</annee>
         <genre>Fiction</genre>
     </livre>
     <livre isbn="978-0002" copy-id="C1" statut="disponible">
-        <titre>L'Étranger</titre>
+        <titre>L'&#201;tranger</titre>
         <auteur>Albert Camus</auteur>
         <annee>1942</annee>
         <genre>Philosophie</genre>
@@ -18,7 +18,7 @@
         <genre>Dystopie</genre>
     </livre>
     <livre isbn="978-0005" copy-id="C1" statut="disponible">
-        <titre>Harry Potter à l'école des sorciers</titre>
+        <titre>Harry Potter &#224; l'&#233;cole des sorciers</titre>
         <auteur>J.K. Rowling</auteur>
         <annee>1997</annee>
         <genre>Fantastique</genre>
@@ -30,7 +30,7 @@
         <genre>Aventure</genre>
     </livre>
     <livre isbn="978-0007" copy-id="C1" statut="disponible">
-        <titre>Les Misérables</titre>
+        <titre>Les Mis&#233;rables</titre>
         <auteur>Victor Hugo</auteur>
         <annee>1862</annee>
         <genre>Drame</genre>
@@ -60,8 +60,8 @@
         <genre>Policier</genre>
     </livre>
     <livre isbn="978-0012" copy-id="C1" statut="disponible">
-        <titre>Crime et Châtiment</titre>
-        <auteur>Fiodor Dostoïevski</auteur>
+        <titre>Crime et Ch&#226;timent</titre>
+        <auteur>Fiodor Dosto&#239;evski</auteur>
         <annee>1866</annee>
         <genre>Psychologie</genre>
     </livre>
@@ -111,7 +111,7 @@
         <titre>Madame Bovary</titre>
         <auteur>Gustave Flaubert</auteur>
         <annee>1857</annee>
-        <genre>Roman réaliste</genre>
+        <genre>Roman r&#233;aliste</genre>
     </livre>
     <livre isbn="83838-38" copy-id="C1" statut="disponible">
         <titre>Le Chat</titre>
@@ -120,9 +120,9 @@
         <genre>Horreur</genre>
     </livre>
 
-    <!-- 10 additional books -->
+    
     <livre isbn="978-0021" copy-id="C1" statut="disponible">
-        <titre>La Métamorphose</titre>
+        <titre>La M&#233;tamorphose</titre>
         <auteur>Franz Kafka</auteur>
         <annee>1915</annee>
         <genre>Fantastique</genre>
@@ -131,7 +131,7 @@
         <titre>Les Fleurs du mal</titre>
         <auteur>Charles Baudelaire</auteur>
         <annee>1857</annee>
-        <genre>Poésie</genre>
+        <genre>Po&#233;sie</genre>
     </livre>
     <livre isbn="978-0023" copy-id="C1" statut="disponible">
         <titre>Ulysse</titre>
@@ -159,12 +159,12 @@
     </livre>
     <livre isbn="978-0027" copy-id="C1" statut="disponible">
         <titre>Jane Eyre</titre>
-        <auteur>Charlotte Brontë</auteur>
+        <auteur>Charlotte Bront&#235;</auteur>
         <annee>1847</annee>
         <genre>Roman</genre>
     </livre>
     <livre isbn="978-0028" copy-id="C1" statut="disponible">
-        <titre>Orgueil et Préjugés</titre>
+        <titre>Orgueil et Pr&#233;jug&#233;s</titre>
         <auteur>Jane Austen</auteur>
         <annee>1813</annee>
         <genre>Roman</genre>
@@ -176,19 +176,19 @@
         <genre>Aventure</genre>
     </livre>
     <livre isbn="978-0030" copy-id="C1" statut="disponible">
-        <titre>L'Odyssée</titre>
-        <auteur>Homère</auteur>
+        <titre>L'Odyss&#233;e</titre>
+        <auteur>Hom&#232;re</auteur>
         <annee>-800</annee>
-        <genre>Épopée</genre>
+        <genre>&#201;pop&#233;e</genre>
     </livre>
         <livre isbn="978-0031" copy-id="C1" statut="disponible">
-        <titre>Les Âmes mortes</titre>
-        <auteur>Nikolaï Gogol</auteur>
+        <titre>Les &#194;mes mortes</titre>
+        <auteur>Nikola&#239; Gogol</auteur>
         <annee>1842</annee>
         <genre>Satire</genre>
     </livre>
     <livre isbn="978-0032" copy-id="C1" statut="disponible">
-        <titre>La Nausée</titre>
+        <titre>La Naus&#233;e</titre>
         <auteur>Jean-Paul Sartre</auteur>
         <annee>1938</annee>
         <genre>Philosophie</genre>
@@ -197,10 +197,10 @@
         <titre>Les Liaisons dangereuses</titre>
         <auteur>Choderlos de Laclos</auteur>
         <annee>1782</annee>
-        <genre>Roman épistolaire</genre>
+        <genre>Roman &#233;pistolaire</genre>
     </livre>
     <livre isbn="978-0034" copy-id="C1" statut="disponible">
-        <titre>L'Insoutenable Légèreté de l'être</titre>
+        <titre>L'Insoutenable L&#233;g&#232;ret&#233; de l'&#234;tre</titre>
         <auteur>Milan Kundera</auteur>
         <annee>1984</annee>
         <genre>Philosophie</genre>
@@ -213,19 +213,19 @@
     </livre>
     <livre isbn="978-0036" copy-id="C1" statut="disponible">
         <titre>Le Parfum</titre>
-        <auteur>Patrick Süskind</auteur>
+        <auteur>Patrick S&#252;skind</auteur>
         <annee>1985</annee>
         <genre>Drame historique</genre>
     </livre>
     <livre isbn="978-0037" copy-id="C1" statut="disponible">
-        <titre>Le Zéro et l'infini</titre>
+        <titre>Le Z&#233;ro et l'infini</titre>
         <auteur>Arthur Koestler</auteur>
         <annee>1940</annee>
         <genre>Politique</genre>
     </livre>
     <livre isbn="978-0038" copy-id="C1" statut="disponible">
         <titre>La Condition humaine</titre>
-        <auteur>André Malraux</auteur>
+        <auteur>Andr&#233; Malraux</auteur>
         <annee>1933</annee>
         <genre>Roman</genre>
     </livre>
@@ -237,13 +237,13 @@
     </livre>
     <livre isbn="978-0040" copy-id="C1" statut="disponible">
         <titre>Les Chants de Maldoror</titre>
-        <auteur>Lautréamont</auteur>
+        <auteur>Lautr&#233;amont</auteur>
         <annee>1869</annee>
-        <genre>Poésie</genre>
+        <genre>Po&#233;sie</genre>
     </livre>
     <livre isbn="978-0041" copy-id="C1" statut="disponible">
-        <titre>Le Maître et Marguerite</titre>
-        <auteur>Mikhaïl Boulgakov</auteur>
+        <titre>Le Ma&#238;tre et Marguerite</titre>
+        <auteur>Mikha&#239;l Boulgakov</auteur>
         <annee>1967</annee>
         <genre>Fantastique</genre>
     </livre>
@@ -251,17 +251,17 @@
         <titre>Les Justes</titre>
         <auteur>Albert Camus</auteur>
         <annee>1949</annee>
-        <genre>Théâtre</genre>
+        <genre>Th&#233;&#226;tre</genre>
     </livre>
     <livre isbn="978-0043" copy-id="C1" statut="disponible">
-        <titre>L'Écume des jours</titre>
+        <titre>L'&#201;cume des jours</titre>
         <auteur>Boris Vian</auteur>
         <annee>1947</annee>
         <genre>Roman</genre>
     </livre>
     <livre isbn="978-0044" copy-id="C1" statut="disponible">
-        <titre>L'Œuvre</titre>
-        <auteur>Émile Zola</auteur>
+        <titre>L'&#338;uvre</titre>
+        <auteur>&#201;mile Zola</auteur>
         <annee>1886</annee>
         <genre>Roman</genre>
     </livre>
@@ -273,18 +273,18 @@
     </livre>
     <livre isbn="978-0046" copy-id="C1" statut="disponible">
         <titre>Tristan et Iseut</titre>
-        <auteur>Joseph Bédier</auteur>
+        <auteur>Joseph B&#233;dier</auteur>
         <annee>1900</annee>
         <genre>Mythe</genre>
     </livre>
     <livre isbn="978-0047" copy-id="C1" statut="disponible">
         <titre>Manon Lescaut</titre>
-        <auteur>Abbé Prévost</auteur>
+        <auteur>Abb&#233; Pr&#233;vost</auteur>
         <annee>1731</annee>
         <genre>Roman</genre>
     </livre>
     <livre isbn="978-0048" copy-id="C1" statut="disponible">
-        <titre>Micromégas</titre>
+        <titre>Microm&#233;gas</titre>
         <auteur>Voltaire</auteur>
         <annee>1752</annee>
         <genre>Philosophie</genre>
@@ -296,7 +296,7 @@
         <genre>Fantastique</genre>
     </livre>
     <livre isbn="978-0050" copy-id="C1" statut="disponible">
-        <titre>Boulevard périphérique</titre>
+        <titre>Boulevard p&#233;riph&#233;rique</titre>
         <auteur>Henry Bauchau</auteur>
         <annee>2008</annee>
         <genre>Drame</genre>

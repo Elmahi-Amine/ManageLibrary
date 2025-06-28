@@ -13,32 +13,42 @@ class HomeController:
     def update_charts(self):
         self.livre_dao = LivreDAO()
         self.membre_dao = MembreDAO()
-        # Chart 1: Status Pie Chart
+        
+        # Chart 1: Status Pie Chart (available vs borrowed)
         stats = {"disponible": 0, "emprunte": 0}
         for elem in self.livre_dao.get_all_livre_elm():
             status = elem.get("statut")
             if status in stats:
                 stats[status] += 1
 
-        # Chart 2: Borrowed Books Per Member
+        # Chart 2: Top 10 Members with Most Borrowed Books
         member_books = {}
         for membre in self.membre_dao.get_all_membres():
             member_books[membre.id] = len(membre.copies)
 
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
+        # Sort members by number of borrowed books in descending order and take top 10
+        top_10_members = sorted(member_books.items(), key=lambda item: item[1], reverse=True)[:10]
+        
+        # Separate the keys and values for plotting
+        top_member_ids = [member_id for member_id, count in top_10_members]
+        top_borrow_counts = [count for member_id, count in top_10_members]
 
-        # Pie chart
-        ax1.pie(stats.values(), labels=stats.keys(), autopct="%1.1f%%", startangle=90)
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+
+        # Pie chart: available vs borrowed books
+        ax1.pie(stats.values(), labels=stats.keys(), autopct="%1.1f%%", startangle=90, colors=["#66b3ff", "#ff9999"])
         ax1.set_title("Répartition des livres")
 
-        # Bar chart
-        ax2.bar(member_books.keys(), member_books.values(), color="skyblue")
-        ax2.set_title("Livres empruntés par membre")
+        # Bar chart: top 10 members with most borrowed books
+        ax2.bar(top_member_ids, top_borrow_counts, color="skyblue")
+        ax2.set_title("Top 10 membres avec le plus de livres empruntés")
         ax2.set_xlabel("ID Membre")
-        ax2.set_ylabel("Nb Livres")
+        ax2.set_ylabel("Nombre de livres empruntés")
+        ax2.set_xticklabels(top_member_ids, rotation=45, ha="right")
 
         plt.tight_layout()
         self.view.display_charts(fig)
+
     
     def load_emprunt_view(self):
         # Get the top-level window from the current view
@@ -58,6 +68,6 @@ class HomeController:
 
         # Wait for the dialog to close
         root_window.wait_window(dialog)
-
+        self.update_charts()
         # Code here continues only after dialog is closed
         print("Borrowing dialog closed.")

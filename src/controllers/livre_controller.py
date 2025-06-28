@@ -9,13 +9,16 @@ if TYPE_CHECKING :
 class LivreController :
     def __init__(self,view:"LivreView"):
         self.view = view
-    def perform_search(self):
+    def perform_search(self):    
         _key=self.view.search_key.get() 
         parameter = self.view.search_method.get()
         livredao = LivreDAO()
         print(f"[perform search]: parameter : {parameter} key : {_key}")
         print(f"[search] : value1.titre : {livredao.search(parameter,_key)[0].titre}")
-        self.afficher_table_livres(self.view.search_result_frame,livredao.search(parameter,_key))
+        search_result = livredao.search(parameter,_key)
+        if not _key :
+            search_result = livredao.get_all_livre()
+        self.afficher_table_livres(self.view.search_result_frame,search_result)
 
     def afficher_table_livres(self, parent, search_results):
         for widget in parent.winfo_children():
@@ -74,7 +77,7 @@ class LivreController :
                 values = table.item(item_id, "values")
                 print(f"[handle action] {values[0]} , {values[1]}")
                 dao.supprimer(values[0],values[1])
-                self.perform_search() #refrech the table
+            self.perform_search() #refrech the table
         elif action == "retourner":
             if len(selected_items)==1:
                 for itm in selected_items:
@@ -89,12 +92,14 @@ class LivreController :
                     mdao = MembreDAO()
                     ldao.retourner(values[0],values[1])
                     mdao.retourner(values[0],values[1])
+                self.perform_search()
         elif action == "emprunter":
             if len(selected_items)>1 or len(selected_items)==0:
                 return 
             for item_id in selected_items:
                 values = table.item(item_id,"values")
                 self.open_emprunt_dialog(values[0],values[1])
+            self.perform_search()
                     
                     
     def open_emprunt_dialog(self,isbn,copy_id):
@@ -115,7 +120,7 @@ class LivreController :
 
         # Wait for the dialog to close
         root_window.wait_window(dialog)
-
+        self.perform_search()
         # Code here continues only after dialog is closed
         print("Borrowing dialog closed.")
 

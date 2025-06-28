@@ -191,31 +191,35 @@ class MembreController:
         
         popup = tk.Toplevel(self.view)
         popup.title(f"Livres empruntés - Membre {person_id}")
-        popup.geometry("400x300")
+        popup.geometry("600x300")
         popup.transient(self.view)
         popup.grab_set()
         
         frame = tk.Frame(popup)
         frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
-        columns = ("ID", "ISBN")
+        columns = ("ID", "ISBN","Titre")
         tree = ttk.Treeview(frame, columns=columns, show="headings")
         
         for col in columns:
             tree.heading(col, text=col)
             tree.column(col, width=180, anchor=tk.CENTER)
-        
-        dao = MembreDAO()
-        membre_element = dao._find_by_id(person_id)
-        if membre_element is None:
-            messagebox.showerror("Erreur", "Membre introuvable.")
-            popup.destroy()
-            return
-        data = dao.membre_from_element(membre_element).copies
-        
-        for row in data:
-            tree.insert("", tk.END, values=row)
-        
+        def update_table():
+            for item in tree.get_children():
+                tree.delete(item)
+            dao = MembreDAO()
+            membre_element = dao._find_by_id(person_id)
+            if membre_element is None:
+                messagebox.showerror("Erreur", "Membre introuvable.")
+                popup.destroy()
+                return
+            data = dao.membre_from_element(membre_element).copies
+            ldao = LivreDAO()
+            for row in data:
+                title = ldao.rechercher_id_isbn(row[1],row[0]).find("titre").text
+                print(f"[show livre empruntee membre ] title is : {title}")
+                tree.insert("", tk.END, values=(row[0],row[1],title))
+        update_table()
         scrollbar = ttk.Scrollbar(frame, orient=tk.VERTICAL, command=tree.yview)
         tree.configure(yscroll=scrollbar.set)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
@@ -231,15 +235,13 @@ class MembreController:
                 return
             row_values = tree.item(selected[0], "values")
             print(f"[Retourner] Selected row: {row_values}")
-            ldao = LivreDAO()
-            if not ldao.check_dispo(row_values[1],row_values[0]):
-                messagebox.showerror("Erreur","Le livre et disponible")
-                return 
+            ldao = LivreDAO() 
             if not messagebox.askyesno("Confirmation","et ce que vous ete sure ?"):
                 return
             mdao = MembreDAO()
             ldao.retourner(row_values[1],row_values[0])
             mdao.retourner(row_values[1],row_values[0])
+            update_table()
         
         context_menu.add_command(label="Retourner", command=on_retourner)
         
