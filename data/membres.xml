@@ -1,14 +1,7 @@
 <membres>
-    <membre id="M001">
-        <nom>Ali Hmida</nom>
-        <list-livres-empr><copy id="C1" isbn="978-0001" /><copy id="C1" isbn="978-0001" /><copy id="C1" isbn="978-0001" /><copy id="C1" isbn="978-0002" /><copy id="C1" isbn="978-0005" /></list-livres-empr>
-    </membre>
     <membre id="M003">
         <nom>Yassine El Amrani</nom>
-        <list-livres-empr>
-            <copy id="c1" isbn="298393" />
-            <copy id="c2" isbn="232932" />
-        </list-livres-empr>
+        <list-livres-empr />
     </membre>
     <membre id="M004">
         <nom>Rania Lahlou</nom>
@@ -78,4 +71,125 @@
         <nom>Anas Bennis</nom>
         <list-livres-empr />
     </membre>
+        <membre id="M021">
+        <nom>Samira El Fadil</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M022">
+        <nom>Rachid Benali</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M023">
+        <nom>Ikram Moufid</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M024">
+        <nom>Youssef Khattabi</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M025">
+        <nom>Nora Hafidi</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M026">
+        <nom>Walid Droussi</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M027">
+        <nom>Lamia Sefiani</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M028">
+        <nom>Othmane Karroumi</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M029">
+        <nom>Salima Ghazali</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M030">
+        <nom>Ayoub Maamar</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M031">
+        <nom>Jalila Errami</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M032">
+        <nom>Nabil Tarchini</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M033">
+        <nom>Hind Amrani</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M034">
+        <nom>Saad Benchakroun</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M035">
+        <nom>Kenza Rhazali</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M036">
+        <nom>Mohcine Abidar</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M037">
+        <nom>Loubna Jabrane</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M038">
+        <nom>Yahya El Faiz</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M039">
+        <nom>Naima Touhami</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M040">
+        <nom>Zakaria Chanafi</nom>
+        <list-livres-empr />
+    </membre>
+        <membre id="M041">
+        <nom>Hajar El Kabbaj</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M042">
+        <nom>Ismail Bennis</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M043">
+        <nom>Wafa Idrissi</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M044">
+        <nom>Ali Khoury</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M045">
+        <nom>Latifa Ouali</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M046">
+        <nom>Tarik Fadili</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M047">
+        <nom>Sofia Benomar</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M048">
+        <nom>Hamza Joundy</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M049">
+        <nom>Zineb Kettani</nom>
+        <list-livres-empr />
+    </membre>
+    <membre id="M050">
+        <nom>Younes Mahdaoui</nom>
+        <list-livres-empr />
+    </membre>
+
 </membres>

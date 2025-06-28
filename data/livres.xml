@@ -1,12 +1,12 @@
 <livres>
-    <livre isbn="978-0001" copy-id="C1" statut="emprunte">
+    <livre isbn="978-0001" copy-id="C1" statut="disponible">
         <titre>Le Petit Prince</titre>
-        <auteur>Antoine de Saint-Exup&#233;ry</auteur>
+        <auteur>Antoine de Saint-Exupéry</auteur>
         <annee>1943</annee>
         <genre>Fiction</genre>
     </livre>
-    <livre isbn="978-0002" copy-id="C1" statut="emprunte">
-        <titre>L'&#201;tranger</titre>
+    <livre isbn="978-0002" copy-id="C1" statut="disponible">
+        <titre>L'Étranger</titre>
         <auteur>Albert Camus</auteur>
         <annee>1942</annee>
         <genre>Philosophie</genre>
@@ -17,44 +17,8 @@
         <annee>1949</annee>
         <genre>Dystopie</genre>
     </livre>
-        <livre isbn="978-0003" copy-id="C4" statut="disponible">
-        <titre>1984</titre>
-        <auteur>George Orwell</auteur>
-        <annee>1949</annee>
-        <genre>Dystopie</genre>
-    </livre>
-        <livre isbn="978-0003" copy-id="C5" statut="disponible">
-        <titre>1984</titre>
-        <auteur>George Orwell</auteur>
-        <annee>1949</annee>
-        <genre>Dystopie</genre>
-    </livre>
-        <livre isbn="978-0003" copy-id="C6" statut="disponible">
-        <titre>1984</titre>
-        <auteur>George Orwell</auteur>
-        <annee>1949</annee>
-        <genre>Dystopie</genre>
-    </livre>
-        <livre isbn="978-0003" copy-id="C7" statut="disponible">
-        <titre>1984</titre>
-        <auteur>George Orwell</auteur>
-        <annee>1949</annee>
-        <genre>Dystopie</genre>
-    </livre>
-        <livre isbn="978-0003" copy-id="C8" statut="disponible">
-        <titre>1984</titre>
-        <auteur>George Orwell</auteur>
-        <annee>1949</annee>
-        <genre>Dystopie</genre>
-    </livre>
-        <livre isbn="978-0003" copy-id="C9" statut="disponible">
-        <titre>1984</titre>
-        <auteur>George Orwell</auteur>
-        <annee>1949</annee>
-        <genre>Dystopie</genre>
-    </livre>
-        <livre isbn="978-0005" copy-id="C1" statut="emprunte">
-        <titre>Harry Potter &#224; l'&#233;cole des sorciers</titre>
+    <livre isbn="978-0005" copy-id="C1" statut="disponible">
+        <titre>Harry Potter à l'école des sorciers</titre>
         <auteur>J.K. Rowling</auteur>
         <annee>1997</annee>
         <genre>Fantastique</genre>
@@ -66,7 +30,7 @@
         <genre>Aventure</genre>
     </livre>
     <livre isbn="978-0007" copy-id="C1" statut="disponible">
-        <titre>Les Mis&#233;rables</titre>
+        <titre>Les Misérables</titre>
         <auteur>Victor Hugo</auteur>
         <annee>1862</annee>
         <genre>Drame</genre>
@@ -96,8 +60,8 @@
         <genre>Policier</genre>
     </livre>
     <livre isbn="978-0012" copy-id="C1" statut="disponible">
-        <titre>Crime et Ch&#226;timent</titre>
-        <auteur>Fiodor Dosto&#239;evski</auteur>
+        <titre>Crime et Châtiment</titre>
+        <auteur>Fiodor Dostoïevski</auteur>
         <annee>1866</annee>
         <genre>Psychologie</genre>
     </livre>
@@ -113,7 +77,7 @@
         <annee>1605</annee>
         <genre>Aventure</genre>
     </livre>
-    <livre isbn="978-0015" copy-id="C1" statut="emprunte">
+    <livre isbn="978-0015" copy-id="C1" statut="disponible">
         <titre>Dracula</titre>
         <auteur>Bram Stoker</auteur>
         <annee>1897</annee>
@@ -131,7 +95,7 @@
         <annee>1952</annee>
         <genre>Drame</genre>
     </livre>
-    <livre isbn="978-0018" copy-id="C1" statut="emprunte">
+    <livre isbn="978-0018" copy-id="C1" statut="disponible">
         <titre>Fahrenheit 451</titre>
         <auteur>Ray Bradbury</auteur>
         <annee>1953</annee>
@@ -147,6 +111,194 @@
         <titre>Madame Bovary</titre>
         <auteur>Gustave Flaubert</auteur>
         <annee>1857</annee>
-        <genre>Roman r&#233;aliste</genre>
+        <genre>Roman réaliste</genre>
     </livre>
-<livre copy-id="C1" isbn="83838-38" statut="disponible"><titre>le chat</titre><auteur>ana</auteur><annee>2023</annee><genre>horreur</genre></livre></livres>
+    <livre isbn="83838-38" copy-id="C1" statut="disponible">
+        <titre>Le Chat</titre>
+        <auteur>Ana</auteur>
+        <annee>2023</annee>
+        <genre>Horreur</genre>
+    </livre>
+
+    <!-- 10 additional books -->
+    <livre isbn="978-0021" copy-id="C1" statut="disponible">
+        <titre>La Métamorphose</titre>
+        <auteur>Franz Kafka</auteur>
+        <annee>1915</annee>
+        <genre>Fantastique</genre>
+    </livre>
+    <livre isbn="978-0022" copy-id="C1" statut="disponible">
+        <titre>Les Fleurs du mal</titre>
+        <auteur>Charles Baudelaire</auteur>
+        <annee>1857</annee>
+        <genre>Poésie</genre>
+    </livre>
+    <livre isbn="978-0023" copy-id="C1" statut="disponible">
+        <titre>Ulysse</titre>
+        <auteur>James Joyce</auteur>
+        <annee>1922</annee>
+        <genre>Modernisme</genre>
+    </livre>
+    <livre isbn="978-0024" copy-id="C1" statut="disponible">
+        <titre>Le Meilleur des mondes</titre>
+        <auteur>Aldous Huxley</auteur>
+        <annee>1932</annee>
+        <genre>Dystopie</genre>
+    </livre>
+    <livre isbn="978-0025" copy-id="C1" statut="disponible">
+        <titre>Voyage au centre de la Terre</titre>
+        <auteur>Jules Verne</auteur>
+        <annee>1864</annee>
+        <genre>Science-fiction</genre>
+    </livre>
+    <livre isbn="978-0026" copy-id="C1" statut="disponible">
+        <titre>Les Trois Mousquetaires</titre>
+        <auteur>Alexandre Dumas</auteur>
+        <annee>1844</annee>
+        <genre>Aventure</genre>
+    </livre>
+    <livre isbn="978-0027" copy-id="C1" statut="disponible">
+        <titre>Jane Eyre</titre>
+        <auteur>Charlotte Brontë</auteur>
+        <annee>1847</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0028" copy-id="C1" statut="disponible">
+        <titre>Orgueil et Préjugés</titre>
+        <auteur>Jane Austen</auteur>
+        <annee>1813</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0029" copy-id="C1" statut="disponible">
+        <titre>Moby Dick</titre>
+        <auteur>Herman Melville</auteur>
+        <annee>1851</annee>
+        <genre>Aventure</genre>
+    </livre>
+    <livre isbn="978-0030" copy-id="C1" statut="disponible">
+        <titre>L'Odyssée</titre>
+        <auteur>Homère</auteur>
+        <annee>-800</annee>
+        <genre>Épopée</genre>
+    </livre>
+        <livre isbn="978-0031" copy-id="C1" statut="disponible">
+        <titre>Les Âmes mortes</titre>
+        <auteur>Nikolaï Gogol</auteur>
+        <annee>1842</annee>
+        <genre>Satire</genre>
+    </livre>
+    <livre isbn="978-0032" copy-id="C1" statut="disponible">
+        <titre>La Nausée</titre>
+        <auteur>Jean-Paul Sartre</auteur>
+        <annee>1938</annee>
+        <genre>Philosophie</genre>
+    </livre>
+    <livre isbn="978-0033" copy-id="C1" statut="disponible">
+        <titre>Les Liaisons dangereuses</titre>
+        <auteur>Choderlos de Laclos</auteur>
+        <annee>1782</annee>
+        <genre>Roman épistolaire</genre>
+    </livre>
+    <livre isbn="978-0034" copy-id="C1" statut="disponible">
+        <titre>L'Insoutenable Légèreté de l'être</titre>
+        <auteur>Milan Kundera</auteur>
+        <annee>1984</annee>
+        <genre>Philosophie</genre>
+    </livre>
+    <livre isbn="978-0035" copy-id="C1" statut="disponible">
+        <titre>Sur la route</titre>
+        <auteur>Jack Kerouac</auteur>
+        <annee>1957</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0036" copy-id="C1" statut="disponible">
+        <titre>Le Parfum</titre>
+        <auteur>Patrick Süskind</auteur>
+        <annee>1985</annee>
+        <genre>Drame historique</genre>
+    </livre>
+    <livre isbn="978-0037" copy-id="C1" statut="disponible">
+        <titre>Le Zéro et l'infini</titre>
+        <auteur>Arthur Koestler</auteur>
+        <annee>1940</annee>
+        <genre>Politique</genre>
+    </livre>
+    <livre isbn="978-0038" copy-id="C1" statut="disponible">
+        <titre>La Condition humaine</titre>
+        <auteur>André Malraux</auteur>
+        <annee>1933</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0039" copy-id="C1" statut="disponible">
+        <titre>La Chartreuse de Parme</titre>
+        <auteur>Stendhal</auteur>
+        <annee>1839</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0040" copy-id="C1" statut="disponible">
+        <titre>Les Chants de Maldoror</titre>
+        <auteur>Lautréamont</auteur>
+        <annee>1869</annee>
+        <genre>Poésie</genre>
+    </livre>
+    <livre isbn="978-0041" copy-id="C1" statut="disponible">
+        <titre>Le Maître et Marguerite</titre>
+        <auteur>Mikhaïl Boulgakov</auteur>
+        <annee>1967</annee>
+        <genre>Fantastique</genre>
+    </livre>
+    <livre isbn="978-0042" copy-id="C1" statut="disponible">
+        <titre>Les Justes</titre>
+        <auteur>Albert Camus</auteur>
+        <annee>1949</annee>
+        <genre>Théâtre</genre>
+    </livre>
+    <livre isbn="978-0043" copy-id="C1" statut="disponible">
+        <titre>L'Écume des jours</titre>
+        <auteur>Boris Vian</auteur>
+        <annee>1947</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0044" copy-id="C1" statut="disponible">
+        <titre>L'Œuvre</titre>
+        <auteur>Émile Zola</auteur>
+        <annee>1886</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0045" copy-id="C1" statut="disponible">
+        <titre>Les Travailleurs de la mer</titre>
+        <auteur>Victor Hugo</auteur>
+        <annee>1866</annee>
+        <genre>Aventure</genre>
+    </livre>
+    <livre isbn="978-0046" copy-id="C1" statut="disponible">
+        <titre>Tristan et Iseut</titre>
+        <auteur>Joseph Bédier</auteur>
+        <annee>1900</annee>
+        <genre>Mythe</genre>
+    </livre>
+    <livre isbn="978-0047" copy-id="C1" statut="disponible">
+        <titre>Manon Lescaut</titre>
+        <auteur>Abbé Prévost</auteur>
+        <annee>1731</annee>
+        <genre>Roman</genre>
+    </livre>
+    <livre isbn="978-0048" copy-id="C1" statut="disponible">
+        <titre>Micromégas</titre>
+        <auteur>Voltaire</auteur>
+        <annee>1752</annee>
+        <genre>Philosophie</genre>
+    </livre>
+    <livre isbn="978-0049" copy-id="C1" statut="disponible">
+        <titre>Le Horla</titre>
+        <auteur>Guy de Maupassant</auteur>
+        <annee>1887</annee>
+        <genre>Fantastique</genre>
+    </livre>
+    <livre isbn="978-0050" copy-id="C1" statut="disponible">
+        <titre>Boulevard périphérique</titre>
+        <auteur>Henry Bauchau</auteur>
+        <annee>2008</annee>
+        <genre>Drame</genre>
+    </livre>
+</livres>
