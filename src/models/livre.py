@@ -119,9 +119,11 @@ class LivreDAO :
         return results
     def emprunter(self,isbn,copy_id):
         targeted_livre=self.rechercher_id_isbn(isbn,copy_id)
-        check_status=targeted_livre.get("statut")
+        check_status=self.livre_from_element(targeted_livre).statut
+        print (f'[wer are in livre emprunter ]status of livre is {targeted_livre.get("statut")}')
         if(check_status=="disponible"):
             targeted_livre.set("statut","emprunte")
+        self.__tree.write(LivreDAO.__storage_file_path)
     def get_all_livre_elm(self):
         return self.__tree.getroot().findall("livre")
     def get_all_livre(self):
@@ -129,4 +131,7 @@ class LivreDAO :
         for elm in self.get_all_livre_elm():
             result.append(self.livre_from_element(elm))
         return result
+    def check_dispo(self,isbn,copyid):
+        elm = self.rechercher_id_isbn(isbn,copy_id=copyid)
+        return self.livre_from_element(elm).statut == "disponible"
             

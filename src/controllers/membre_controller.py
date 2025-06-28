@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
 from models.membre import Membre, MembreDAO 
+from models.livre import Livre , LivreDAO
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
@@ -230,6 +231,15 @@ class MembreController:
                 return
             row_values = tree.item(selected[0], "values")
             print(f"[Retourner] Selected row: {row_values}")
+            ldao = LivreDAO()
+            if not ldao.check_dispo(row_values[1],row_values[0]):
+                messagebox.showerror("Erreur","Le livre et disponible")
+                return 
+            if not messagebox.askyesno("Confirmation","et ce que vous ete sure ?"):
+                return
+            mdao = MembreDAO()
+            ldao.retourner(row_values[1],row_values[0])
+            mdao.retourner(row_values[1],row_values[0])
         
         context_menu.add_command(label="Retourner", command=on_retourner)
         

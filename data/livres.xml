@@ -1,5 +1,5 @@
 <livres>
-    <livre isbn="978-0001" copy-id="C1" statut="disponible">
+    <livre isbn="978-0001" copy-id="C1" statut="emprunte">
         <titre>Le Petit Prince</titre>
         <auteur>Antoine de Saint-Exup&#233;ry</auteur>
         <annee>1943</annee>
@@ -53,7 +53,7 @@
         <annee>1949</annee>
         <genre>Dystopie</genre>
     </livre>
-        <livre isbn="978-0005" copy-id="C1" statut="emprunte">
+        <livre isbn="978-0005" copy-id="C1" statut="disponible">
         <titre>Harry Potter &#224; l'&#233;cole des sorciers</titre>
         <auteur>J.K. Rowling</auteur>
         <annee>1997</annee>
@@ -71,7 +71,7 @@
         <annee>1862</annee>
         <genre>Drame</genre>
     </livre>
-    <livre isbn="978-0008" copy-id="C1" statut="emprunte">
+    <livre isbn="978-0008" copy-id="C1" statut="disponible">
         <titre>La Peste</titre>
         <auteur>Albert Camus</auteur>
         <annee>1947</annee>
@@ -95,7 +95,7 @@
         <annee>1980</annee>
         <genre>Policier</genre>
     </livre>
-    <livre isbn="978-0012" copy-id="C1" statut="emprunte">
+    <livre isbn="978-0012" copy-id="C1" statut="disponible">
         <titre>Crime et Ch&#226;timent</titre>
         <auteur>Fiodor Dosto&#239;evski</auteur>
         <annee>1866</annee>

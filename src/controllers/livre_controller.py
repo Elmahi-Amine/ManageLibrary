@@ -82,7 +82,7 @@ class LivreController :
                     if(values[7]=="disponible"):
                         messagebox.showerror("Erreur","Le livre et disponible")
                         return 
-                    if not messagebox.askyesno("et ce que vous ete sure ?"):
+                    if not messagebox.askyesno("Confirmation","et ce que vous ete sure ?"):
                         return
                     ldao = LivreDAO()
                     from models.membre import MembreDAO
