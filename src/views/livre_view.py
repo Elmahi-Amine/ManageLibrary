@@ -75,6 +75,10 @@ class LivreView(tk.Frame):
         self.search_button.pack(side="right", pady=5)
         self.search_result_frame= tk.Frame(self,bg ="#ffffff")
         self.search_result_frame.pack(fill="both", expand=True, padx=10, pady=10)
+        from models.livre import LivreDAO
+        dao = LivreDAO()
+        all_the_members = dao.get_all_livre()
+        self.controller.afficher_table_livres(self.search_result_frame,all_the_members)
         self.search_entry.bind("<Return>", lambda event: self.controller.perform_search())
 
 
