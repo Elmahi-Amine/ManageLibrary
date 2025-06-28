@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 from typing import TYPE_CHECKING
+from models.livre import LivreDAO,Livre
+from models.membre import MembreDAO,Membre
 if TYPE_CHECKING :
     from controllers.emprunt import EmpruntController
 class EmpruntView(tk.Frame):
@@ -72,6 +74,18 @@ class EmpruntView(tk.Frame):
         else:
             self.clear_search_slide2()
             self.slide2.tkraise()
+            if self.controller.caller=="Livre":
+                self.search_key = self.controller.var1
+                self.search_param = "isbn"
+                print("[we reached update table livre ]")
+                self.update_table("livre")
+                for item_id in self.book_table.get_children():
+                    values = self.book_table.item(item_id,"value")
+                    print(f"[we reached the for loop: if param :{values[2]} ]")
+                    if values[2]== self.controller.var2:
+                        print(f"[we reached showlide 2 set selection ] isbn : {self.controller.var1} copy_id :{self.controller.var2}: selected item copy id:{values[2]}")
+                        self.book_table.selection_set(item_id)
+    
         
         
 
@@ -200,13 +214,14 @@ class EmpruntView(tk.Frame):
 
             # If no search key, show all members or empty
             if not key:
-                # For example, show default static data or no rows
-                for i in range(5):
-                    self.member_table.insert("", "end", values=(f"M{i+1}", f"Member {i+1}"))
+                dao = MembreDAO()
+                results = dao.get_all_membres()
+                for membre in results:
+                    # Assuming membre has attributes id and nom
+                    self.member_table.insert("", "end", values=(membre.id, membre.nom))
                 return
 
             # Search members from DAO
-            from models.membre import MembreDAO
             mdao = MembreDAO()
             results = mdao.search(param, key)  # Should return list of member objects
 
@@ -223,14 +238,25 @@ class EmpruntView(tk.Frame):
             # If no search key, show all books or empty
             if not key:
                 # Show default static data or no rows
-                for i in range(10):
+                dao = LivreDAO()
+                results = dao.get_all_livre()
+                for livre in results:
+                    
+                    count = ldao.count_copies(livre.isbn)  # Get count copies
                     self.book_table.insert("", "end", values=(
-                        f"ISBN-{i+1}", f"Title {i+1}", f"CPY{i+1}", "Author A", "2020", "Fiction", "Available", 1
+                        livre.isbn,
+                        livre.titre,
+                        livre.copy_id,
+                        livre.auteur,
+                        livre.annee,
+                        livre.genre,
+                        livre.statut,
+                        count
                     ))
+
                 return
 
             # Search books from DAO
-            from models.livre import LivreDAO
             ldao = LivreDAO()
             results = ldao.search(param, key)  # Should return list of livre objects
 

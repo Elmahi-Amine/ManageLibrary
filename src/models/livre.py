@@ -124,4 +124,9 @@ class LivreDAO :
             targeted_livre.set("statut","emprunte")
     def get_all_livre_elm(self):
         return self.__tree.getroot().findall("livre")
+    def get_all_livre(self):
+        result =[]
+        for elm in self.get_all_livre_elm():
+            result.append(self.livre_from_element(elm))
+        return result
             

@@ -89,8 +89,36 @@ class LivreController :
                     mdao = MembreDAO()
                     ldao.retourner(values[0],values[1])
                     mdao.retourner(values[0],values[1])
+        elif action == "emprunter":
+            if len(selected_items)>1 or len(selected_items)==0:
+                return 
+            for item_id in selected_items:
+                values = table.item(item_id,"values")
+                self.open_emprunt_dialog(values[0],values[1])
                     
                     
+    def open_emprunt_dialog(self,isbn,copy_id):
+        # Get the top-level window from the current view
+        root_window = self.view.winfo_toplevel()
+
+        # Create a new Toplevel window as a modal dialog
+        dialog = tk.Toplevel(root_window)
+        dialog.title("📘 Emprunt")
+        dialog.geometry("600x400")
+        dialog.configure(bg="white")
+        dialog.transient(root_window)     # Show dialog on top of parent
+        dialog.grab_set()                 # Make it modal (block interaction with root)
+        
+        # Create the Emprunt controller (will auto-create the view)
+        from controllers.emprunt import EmpruntController
+        EmpruntController(dialog,caller="Livre",var1=isbn,var2=copy_id)
+
+        # Wait for the dialog to close
+        root_window.wait_window(dialog)
+
+        # Code here continues only after dialog is closed
+        print("Borrowing dialog closed.")
+
 
     def create_add_book_form(self):
         parent = self.view
