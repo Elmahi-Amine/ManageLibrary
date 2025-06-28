@@ -10,7 +10,7 @@ class LivreController :
     def __init__(self,view:"LivreView"):
         self.view = view
     def perform_search(self):
-        _key=self.view.search_key.get()
+        _key=self.view.search_key.get() 
         parameter = self.view.search_method.get()
         livredao = LivreDAO()
         print(f"[perform search]: parameter : {parameter} key : {_key}")
@@ -75,6 +75,23 @@ class LivreController :
                 print(f"[handle action] {values[0]} , {values[1]}")
                 dao.supprimer(values[0],values[1])
                 self.perform_search() #refrech the table
+        elif action == "retourner":
+            if len(selected_items)==1:
+                for itm in selected_items:
+                    values= table.item(itm,"values")
+                    if(values[7]=="disponible"):
+                        messagebox.showerror("Erreur","Le livre et disponible")
+                        return 
+                    if not messagebox.askyesno("et ce que vous ete sure ?"):
+                        return
+                    ldao = LivreDAO()
+                    from models.membre import MembreDAO
+                    mdao = MembreDAO()
+                    ldao.retourner(values[0],values[1])
+                    mdao.retourner(values[0],values[1])
+                    
+                    
+
     def create_add_book_form(self):
         parent = self.view
 

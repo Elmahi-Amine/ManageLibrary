@@ -74,7 +74,7 @@ class LivreDAO :
         self.__tree.write(LivreDAO.__storage_file_path)
 
     def retourner(self,isbn,id):
-        targeted_livre= self.rechercher_id_isbn
+        targeted_livre= self.rechercher_id_isbn()
         targeted_livre.set("statut","disponible")
         self.__tree.write(LivreDAO.__storage_file_path)
 

@@ -86,15 +86,16 @@ class MembreDAO:
             copy.set("isbn",book_isbn)
         self.__tree.write(MembreDAO.__storage_file_path)
         
-    def retourner(self,id,book_isbn,book_id):
-        targeted_membre=self._find_by_id(id)
-        list_livre_empr= targeted_membre.find("list-livres-empr")
-        books = list_livre_empr.findall("copy")
-        for item in books :
-            item_isbn = item.get("isbn")
-            item_id = item.get("id")
-            if(book_isbn==item_isbn and book_id == item_id ):
-                list_livre_empr.remove(item)
+    def retourner(self,book_isbn,book_id):
+        for targeted_membre in self.get_all_membres_elm():
+            list_livre_empr= targeted_membre.find("list-livres-empr")
+            books = list_livre_empr.findall("copy")
+            
+            for item in books :
+                item_isbn = item.get("isbn")
+                item_id = item.get("id")
+                if(book_isbn==item_isbn and book_id == item_id ):
+                    list_livre_empr.remove(item)
         self.__tree.write(MembreDAO.__storage_file_path)
 
     def get_all_membres(self):

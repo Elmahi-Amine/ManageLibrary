@@ -84,9 +84,14 @@ class MembreController:
                 values = table.item(item_id, "values")
                 self._show_livre_emprunt_panel(values[0])
         elif action == "emprunter":
-            self.open_emprunt_dialog()
+            if len(selected_items)>1 or len(selected_items)== 0:
+                return 
+            for item_id in selected_items:
+                values = table.item(item_id, "values")
+                self.open_emprunt_dialog(values[0])
+            
 
-    def open_emprunt_dialog(self):
+    def open_emprunt_dialog(self,person_id):
         # Get the top-level window from the current view
         root_window = self.view.winfo_toplevel()
 
@@ -100,7 +105,7 @@ class MembreController:
         
         # Create the Emprunt controller (will auto-create the view)
         from controllers.emprunt import EmpruntController
-        EmpruntController(dialog)
+        EmpruntController(dialog,caller="Membre",var1=person_id)
 
         # Wait for the dialog to close
         root_window.wait_window(dialog)

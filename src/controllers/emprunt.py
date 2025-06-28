@@ -2,8 +2,11 @@ from views.emprunter import EmpruntView
 from tkinter import messagebox
 
 class EmpruntController:
-    def __init__(self, root):
+    def __init__(self, root,caller="Home",var1="",var2=""):
         self.root = root
+        self.caller=caller
+        self.var1 = var1
+        self.var2 = var2
         self.view = EmpruntView(root, self)
         self.view.pack(fill="both", expand=True)
 

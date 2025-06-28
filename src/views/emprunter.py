@@ -1,8 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
-
+from typing import TYPE_CHECKING
+if TYPE_CHECKING :
+    from controllers.emprunt import EmpruntController
 class EmpruntView(tk.Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent, controller:"EmpruntController"):
         super().__init__(parent, bg="white")
         self.controller = controller
         
@@ -53,14 +55,25 @@ class EmpruntView(tk.Frame):
         self.search_key = ""
         self.search_param = ""
 
-        self.update_table("membre")  # Just placeholder for now
 
-        if num == 1:
+        if num == 1:        
+            if self.controller.caller == "Membre":
+                self.search_key = self.controller.var1
+                self.search_param = "id"
+            self.update_table("membre")  # Just placeholder for now
             self.clear_search_slide1()
             self.slide1.tkraise()
+
+            if self.controller.caller == "Membre":
+                for itm_id in self.member_table.get_children():
+                    values = self.member_table.item(itm_id,"values")
+                    if(values[0]==self.controller.var1):
+                        self.member_table.selection_set(itm_id)
         else:
             self.clear_search_slide2()
             self.slide2.tkraise()
+        
+        
 
     def create_slide1(self):
         for widget in self.slide1.winfo_children():
