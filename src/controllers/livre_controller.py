@@ -14,7 +14,7 @@ class LivreController :
         parameter = self.view.search_method.get()
         livredao = LivreDAO()
         print(f"[perform search]: parameter : {parameter} key : {_key}")
-        print(f"[search] : value1.titre : {livredao.search(parameter,_key)[0].titre}")
+        
         search_result = livredao.search(parameter,_key)
         if not _key :
             search_result = livredao.get_all_livre()
