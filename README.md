@@ -1,6 +1,5 @@
 # ManageLibrary
-# Gestionnaire de Bibliothèque - Application Python Tkinter
-# objectif : appliquer les connaissances acquises en Python durant le 2eme semestre GI3
+## objectif : appliquer les connaissances acquises en Python durant le 2eme semestre GI3
 
 ## Description
 
