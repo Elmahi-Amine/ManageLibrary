@@ -74,6 +74,7 @@ class EmpruntView(tk.Frame):
         else:
             self.clear_search_slide2()
             self.slide2.tkraise()
+            self.update_table("livre")
             if self.controller.caller=="Livre":
                 self.search_key = self.controller.var1
                 self.search_param = "isbn"
@@ -242,7 +243,7 @@ class EmpruntView(tk.Frame):
                 results = dao.get_all_livre()
                 for livre in results:
                     
-                    count = ldao.count_copies(livre.isbn)  # Get count copies
+                    count = dao.count_copies(livre.isbn)  # Get count copies
                     self.book_table.insert("", "end", values=(
                         livre.isbn,
                         livre.titre,
