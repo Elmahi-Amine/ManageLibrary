@@ -1,7 +1,7 @@
 <membres>
     <membre id="M003">
         <nom>Yassine El Amrani</nom>
-        <list-livres-empr />
+        <list-livres-empr><copy id="C1" isbn="978-0001" /><copy id="C1" isbn="978-0002" /><copy id="C3" isbn="978-0003" /></list-livres-empr>
     </membre>
     <membre id="M004">
         <nom>Rania Lahlou</nom>
@@ -17,7 +17,7 @@
     </membre>
     <membre id="M007">
         <nom>Karim Berrada</nom>
-        <list-livres-empr />
+        <list-livres-empr><copy id="C1" isbn="978-0005" /><copy id="C1" isbn="978-0006" /><copy id="C1" isbn="978-0007" /></list-livres-empr>
     </membre>
     <membre id="M008">
         <nom>Leila Tahiri</nom>
@@ -53,7 +53,7 @@
     </membre>
     <membre id="M016">
         <nom>Yasmine Taibi</nom>
-        <list-livres-empr />
+        <list-livres-empr><copy id="C1" isbn="978-0016" /></list-livres-empr>
     </membre>
     <membre id="M017">
         <nom>Amine Chafik</nom>
