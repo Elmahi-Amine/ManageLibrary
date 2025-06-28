@@ -5,7 +5,7 @@
         <annee>1943</annee>
         <genre>Fiction</genre>
     </livre>
-    <livre isbn="978-0002" copy-id="C1" statut="emprunte">
+    <livre isbn="978-0002" copy-id="C1" statut="disponible">
         <titre>L'&#201;tranger</titre>
         <auteur>Albert Camus</auteur>
         <annee>1942</annee>

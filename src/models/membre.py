@@ -90,7 +90,6 @@ class MembreDAO:
         for targeted_membre in self.get_all_membres_elm():
             list_livre_empr= targeted_membre.find("list-livres-empr")
             books = list_livre_empr.findall("copy")
-            
             for item in books :
                 item_isbn = item.get("isbn")
                 item_id = item.get("id")

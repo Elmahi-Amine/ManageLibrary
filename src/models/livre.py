@@ -68,13 +68,13 @@ class LivreDAO :
         root = self.__tree.getroot()
         return sum(1 for livre in root.findall("livre") if livre.get("isbn") == isbn)
     
-    def emprunter(self,isbn,id):
-        targeted_livre = self.rechercher_id_isbn(isbn,id)
+    def emprunter(self,isbn,copyid):
+        targeted_livre = self.rechercher_id_isbn(isbn,copyid)
         targeted_livre.set("statut","emprunte")
         self.__tree.write(LivreDAO.__storage_file_path)
 
-    def retourner(self,isbn,id):
-        targeted_livre= self.rechercher_id_isbn()
+    def retourner(self,isbn,copy_id):
+        targeted_livre= self.rechercher_id_isbn(isbn,copy_id)
         targeted_livre.set("statut","disponible")
         self.__tree.write(LivreDAO.__storage_file_path)
 

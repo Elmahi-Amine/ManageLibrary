@@ -1,7 +1,7 @@
 <membres>
     <membre id="M001">
         <nom>Ali Hmida</nom>
-        <list-livres-empr><copy id="C3" isbn="978-0003" /></list-livres-empr>
+        <list-livres-empr><copy id="C3" isbn="978-0003" /><copy id="C3" isbn="978-0003" /><copy id="C1" isbn="978-0007" /><copy id="C1" isbn="978-0010" /></list-livres-empr>
     </membre>
     <membre id="M003">
         <nom>Yassine El Amrani</nom>
