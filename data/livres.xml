@@ -5,7 +5,7 @@
         <annee>1943</annee>
         <genre>Fiction</genre>
     </livre>
-    <livre isbn="978-0002" copy-id="C1" statut="disponible">
+    <livre isbn="978-0002" copy-id="C1" statut="emprunte">
         <titre>L'&#201;tranger</titre>
         <auteur>Albert Camus</auteur>
         <annee>1942</annee>
@@ -53,7 +53,7 @@
         <annee>1949</annee>
         <genre>Dystopie</genre>
     </livre>
-        <livre isbn="978-0005" copy-id="C1" statut="disponible">
+        <livre isbn="978-0005" copy-id="C1" statut="emprunte">
         <titre>Harry Potter &#224; l'&#233;cole des sorciers</titre>
         <auteur>J.K. Rowling</auteur>
         <annee>1997</annee>
