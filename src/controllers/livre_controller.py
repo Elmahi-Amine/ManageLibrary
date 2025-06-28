@@ -9,7 +9,7 @@ if TYPE_CHECKING :
 class LivreController :
     def __init__(self,view:"LivreView"):
         self.view = view
-    def perform_search(self):    
+    def perform_search(self):   
         _key=self.view.search_key.get() 
         parameter = self.view.search_method.get()
         livredao = LivreDAO()

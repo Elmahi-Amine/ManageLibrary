@@ -118,9 +118,7 @@
         <auteur>Ana</auteur>
         <annee>2023</annee>
         <genre>Horreur</genre>
-    </livre>
-
-    
+    </livre> 
     <livre isbn="978-0021" copy-id="C1" statut="disponible">
         <titre>La M&#233;tamorphose</titre>
         <auteur>Franz Kafka</auteur>

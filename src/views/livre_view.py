@@ -8,8 +8,9 @@ class LivreView(tk.Frame):
         super().__init__(parent,bg="#dbdbdb")
         self.controller = LivreController(self)
         #self.label = tk.Label(self,text="Livres",font=("Arial",18))
-        self.search_key = tk.StringVar()
-        self.search_method = tk.StringVar(value="")
+        self.search_key = tk.StringVar(value="")  # optional default value
+        self.search_method = tk.StringVar(value="titre")  # default search parameter
+
 
         self.search_bar = tk.Frame(self, bg="#dbdbdb", height=50,padx=10)
         self.search_bar.pack(fill="x", side="top")
