@@ -187,8 +187,4 @@
         <nom>Zineb Kettani</nom>
         <list-livres-empr />
     </membre>
-    <membre id="M050">
-        <nom>Younes Mahdaoui</nom>
-        <list-livres-empr />
-    </membre>
-</membres>
+    </membres>
